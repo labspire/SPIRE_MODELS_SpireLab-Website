@@ -1,0 +1,333 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASR Model | SPIRE MODELS</title>
+    <link rel="icon" type="image/png" href="{% static 'images/spire logo.png' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=6">
+    <script src="{% static 'js/asr_mic.js' %}" defer></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="{% url 'home' %}" class="brand-wrapper">
+                <img src="{% static 'images/Spire logo.png' %}?v=3" alt="SPIRE LAB" class="header-logo">
+                <div class="brand-text-block">
+                    <span class="brand-title">SPIRE MODELS</span>
+                    <span class="brand-tag">Indian Institute of Science (IISc)</span>
+                </div>
+            </a>
+
+            <div class="nav-menu-wrapper">
+                <nav>
+                    <ul class="top-nav-links">
+
+                        <li class="context-menu-container languages-nav-item">
+                            <a href="{% url 'languages_page' %}">Languages</a>
+                            <div class="dropdown-panel lang-dropdown-panel">
+                                <div class="lang-pill-grid">
+                                    <span class="lang-pill-item">Bengali</span>
+                                    <span class="lang-pill-item">Bhojpuri</span>
+                                    <span class="lang-pill-item">Chhattisgarhi</span>
+                                    <span class="lang-pill-item">Hindi</span>
+                                    <span class="lang-pill-item">Kannada</span>
+                                    <span class="lang-pill-item">Magahi</span>
+                                    <span class="lang-pill-item">Maithili</span>
+                                    <span class="lang-pill-item">Marathi</span>
+                                    <span class="lang-pill-item">Telugu</span>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="context-menu-container models-nav-item">
+                            <a href="{% url 'models_page' %}">Models</a>
+                            <div class="dropdown-panel">
+                                <a href="{% url 'model_asr' %}">1. Automatic Speech Recognition (ASR)</a>
+                                <a href="{% url 'model_lid' %}">2. Language Identification (LID)</a>
+                                <a href="{% url 'model_dialect' %}">3. Dialect Identification</a>
+                            </div>
+                        </li>
+
+                        <li><a href="{% url 'leaderboard_page' %}">Leaderboard</a></li>
+                        
+                        <li><a href="{% url 'api_keys_page' %}">API Keys</a></li>
+                        <li><a href="{% url 'publications_page' %}">Publications</a></li>
+                    </ul>
+                </nav>
+
+                <div class="context-menu-container">
+                    <button class="dots-menu-btn">&#8942;</button>
+                    <div class="dropdown-panel">
+                        <a href="{% url 'publications_page' %}">About Laboratory</a>
+                        <a href="{% url 'publications_page' %}">Publications Archive</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section" style="min-height: 35vh;">
+        <div class="hero-content-wrapper">
+            <h1 class="hero-title" style="font-size: 3.5rem; letter-spacing: 6px;">ASR MODEL</h1>
+            <p class="hero-subtitle">Automatic Speech Recognition for 9 Indian Languages</p>
+            <center><div class="full-accent-line"></div></center>
+        </div>
+    </section>
+
+    <section class="sliding-section">
+        <h2 class="section-head">About This Model</h2>
+
+        <div class="model-tag-row">
+            <span class="model-tag">Automatic Speech Recognition</span>
+            <span class="model-tag">ESPnet</span>
+            <span class="model-tag">respin</span>
+            <span class="model-tag">9 languages</span>
+            <span class="model-tag">speech</span>
+            <span class="model-tag">audio</span>
+            <span class="model-tag">indian-languages</span>
+            <span class="model-tag tag-license">License: CC-BY-4.0</span>
+        </div>
+
+        <p class="section-desc">
+            This ASR system is built on the E-Branchformer architecture using the ESPnet2 toolkit,
+            and trained on the RESPIN-S1.0 corpus — a large-scale, multi-dialectal, multi-domain
+            read-speech dataset developed at SPIRE Lab, IISc. It supports transcription across
+            nine major Indian languages, including several regional dialects that are underrepresented
+            in most existing speech datasets. The repository contains E-Branchformer-based ESPnet2 ASR
+            models trained on the RESPIN-S1.0 small train splits.
+        </p>
+
+        <div class="matrix-container">
+            <div class="ml-card">
+                <h3>Training Corpus</h3>
+                <p>RESPIN-S1.0 — 10,000+ hours of validated read speech, spanning 38+ dialects across 9 Indian languages, collected across agriculture and finance domains.</p>
+            </div>
+            <div class="ml-card">
+                <h3>Architecture</h3>
+                <p>E-Branchformer encoder-decoder, trained using the ESPnet2 framework. Benchmarked against TDNN-HMM, Whisper, and wav2vec2-based baselines.</p>
+            </div>
+            <div class="ml-card">
+                <h3>License</h3>
+                <p>Released under CC-BY-4.0. Model card and weights are publicly available on HuggingFace under SpireLab/spire_respin_baselines_espnet.</p>
+            </div>
+        </div>
+
+        <div class="resource-link-row">
+            <a href="https://huggingface.co/SpireLab/spire_respin_baselines_espnet" target="_blank" rel="noopener noreferrer" class="neon-btn">View on HuggingFace →</a>
+            <a href="https://huggingface.co/SpireLab/spire_respin_baselines_espnet/colab" target="_blank" rel="noopener noreferrer" class="card-btn" style="background:#334155;">Open in Google Colab →</a>
+            <a href="https://huggingface.co/SpireLab/spire_respin_baselines_espnet/kaggle" target="_blank" rel="noopener noreferrer" class="card-btn" style="background:#334155;">Open in Kaggle →</a>
+        </div>
+    </section>
+
+    <div class="section-zebra-fill">
+        <section class="sliding-section">
+            <h2 class="section-head">Installation &amp; Download</h2>
+            <p class="section-desc">
+                Follow the steps below to download and run this model locally using ESPnet2. Make sure you have
+                completed the <a href="https://espnet.github.io/espnet/installation.html" target="_blank" rel="noopener noreferrer" style="color:#991b1b; font-weight:600;">ESPnet installation</a> first.
+            </p>
+
+            <p class="code-block-label">1. Install ESPnet and download the model</p>
+            <div class="code-block-wrapper">
+<pre>cd espnet
+pip install -e .
+cd egs2/respin_small/asr1
+./run.sh --skip_data_prep true --skip_train true --download_model SpireLab/spire_respin_baselines_espnet</pre>
+            </div>
+
+            <p class="code-block-label">2. Use the model in Python (ESPnet2)</p>
+            <div class="code-block-wrapper">
+<pre>from espnet2.bin.asr_inference import Speech2Text
+
+model = Speech2Text.from_pretrained(
+    "SpireLab/spire_respin_baselines_espnet"
+)
+
+speech, rate = soundfile.read("speech.wav")
+text, *_ = model(speech)[0]</pre>
+            </div>
+
+            <p class="code-block-label">3. Citation</p>
+            <div class="code-block-wrapper">
+<pre>@inproceedings{watanabe2018espnet,
+  author={Shinji Watanabe and Takaaki Hori and Shigeki Karita and Tomoki Hayashi and Jiro Nishitoba and Yuya Unno and Nelson Yalta and Jahn Heymann and Matthew Wiesner and Nanxin Chen and Adithya Renduchintala and Tsubasa Ochiai},
+  title={{ESPnet}: End-to-End Speech Processing Toolkit},
+  year={2018},
+  booktitle={Proc. Interspeech},
+  pages={2207--2211},
+  doi={10.21437/Interspeech.2018-1456},
+  url={http://dx.doi.org/10.21437/Interspeech.2018-1456}
+}</pre>
+            </div>
+        </section>
+    </div>
+
+    <section class="sliding-section">
+        <h2 class="section-head">Supported Languages &amp; Benchmark Accuracy</h2>
+        <p class="section-desc">Character Error Rate (CER) and Word Error Rate (WER) on the RESPIN-S1.0 small test splits. Lower is better.</p>
+
+        <table class="leaderboard-data-table">
+            <thead>
+                <tr>
+                    <th>Language</th>
+                    <th>Code</th>
+                    <th>CER (%)</th>
+                    <th>WER (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Hindi</td><td>hi</td><td>3.1</td><td>9.9</td></tr>
+                <tr><td>Chhattisgarhi</td><td>ch</td><td>3.1</td><td>10.6</td></tr>
+                <tr><td>Marathi</td><td>mr</td><td>3.1</td><td>14.5</td></tr>
+                <tr><td>Bengali</td><td>bn</td><td>4.1</td><td>15.0</td></tr>
+                <tr><td>Telugu</td><td>te</td><td>4.1</td><td>21.6</td></tr>
+                <tr><td>Bhojpuri</td><td>bh</td><td>4.4</td><td>15.2</td></tr>
+                <tr><td>Kannada</td><td>kn</td><td>4.6</td><td>24.5</td></tr>
+                <tr><td>Maithili</td><td>mt</td><td>5.0</td><td>17.9</td></tr>
+                <tr><td>Magahi</td><td>mg</td><td>6.0</td><td>20.4</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="sliding-section" id="asr-demo">
+        <h2 class="section-head">Try It Yourself</h2>
+        <p class="section-desc">Upload a short audio clip (WAV/MP3, ideally under 30 seconds) and select the spoken language to generate a live transcription.</p>
+
+        <div class="matrix-container" style="display: block;">
+            <div class="ml-card" style="max-width: 650px; margin: 0 auto; text-align: left;">
+                <h3>⚡ Live Transcription Demo</h3>
+                <p style="margin-bottom: 20px; font-size: 0.9rem; color: #64748b;">
+                    Runs on our RESPIN E-Branchformer ASR model. Processing may take a few seconds depending on audio length.
+                </p>
+
+                <form method="POST" enctype="multipart/form-data" id="asrForm" style="display: flex; flex-direction: column; gap: 15px;">
+                    {% csrf_token %}
+
+                    <label style="font-size: 0.85rem; font-weight: 600; color: #334155;">Select language</label>
+                    <select name="language" style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; background: #ffffff; font-weight: 600; color: #334155;">
+                        <option value="hi">Hindi</option>
+                        <option value="bn">Bengali</option>
+                        <option value="bh">Bhojpuri</option>
+                        <option value="ch">Chhattisgarhi</option>
+                        <option value="kn">Kannada</option>
+                        <option value="mg">Magahi</option>
+                        <option value="mr">Marathi</option>
+                        <option value="mt">Maithili</option>
+                        <option value="te">Telugu</option>
+                    </select>
+
+                    <label style="font-size: 0.85rem; font-weight: 600; color: #334155;">Upload audio file</label>
+                    <input type="file" name="audio_file" id="audioFileInput" accept="audio/*" style="padding: 10px; border: 1px dashed #cbd5e1; border-radius: 6px; background: #f8fafc;">
+
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: -5px;">
+                        <div style="flex: 1; height: 1px; background: #e2e8f0;"></div>
+                        <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 600;">OR</span>
+                        <div style="flex: 1; height: 1px; background: #e2e8f0;"></div>
+                    </div>
+
+                    <button type="button" id="micButton" class="neon-btn" style="width: fit-content; padding: 12px 25px; background: #334155;">
+                        🎤 Record from Microphone
+                    </button>
+                    <p id="micStatus" style="font-size: 0.85rem; color: #64748b; margin-top: -8px;"></p>
+
+                    <button type="submit" class="neon-btn" style="width: fit-content; padding: 12px 25px;">Transcribe Audio →</button>
+                </form>
+
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+                    <a href="https://huggingface.co/SpireLab/spire_respin_baselines_espnet/tree/main" target="_blank" rel="noopener noreferrer" class="neon-btn" style="background:#334155; width: fit-content; display:inline-block;">⬇ Download Model Weights (HuggingFace) →</a>
+                </div>
+
+                {% if error %}
+                <div style="margin-top: 25px; padding: 15px; background: #fef2f2; border-left: 4px solid #dc2626; border-radius: 4px;">
+                    <strong style="color: #991b1b;">Error:</strong>
+                    <p style="margin-top: 5px; color: #334155;">{{ error }}</p>
+                </div>
+                {% endif %}
+
+                {% if transcript %}
+                <div style="margin-top: 25px; padding: 15px; background: #f1f5f9; border-left: 4px solid #991b1b; border-radius: 4px;">
+                    <strong>Transcription ({{ selected_language }}):</strong>
+                    <p style="margin-top: 8px; color: #334155; font-size: 1.05rem;">{{ transcript }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <section class="sliding-section">
+        <h2 class="section-head">Research Paper</h2>
+        <p class="section-desc">
+            This model is trained on the RESPIN-S1.0 corpus, introduced in the following peer-reviewed publication.
+        </p>
+
+        <div class="matrix-container" style="display: block;">
+            <div class="ml-card" style="max-width: 800px; margin: 0 auto; text-align: left;">
+                <h3 style="margin-bottom: 6px;">RESPIN-S1.0: A read speech corpus of 10,000+ hours in dialects of nine Indian Languages</h3>
+                <p style="font-size: 0.85rem; color: #991b1b; font-weight: 600; margin-bottom: 14px;">
+                    NeurIPS 2025 — Datasets &amp; Benchmarks Track
+                </p>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 16px;">
+                    Saurabh Kumar, Abhayjeet Singh, Deekshitha G, Amartyaveer, Jesuraj Bandekar, Savitha Murthy,
+                    Sumit Sharma, Sandhya Badiger, Sathvik Udupa, Amala Nagireddi, Srinivasa Raghavan K M,
+                    Rohan Saxena, Jai Nanavati, et al. — IISc Bangalore &amp; Navana Tech
+                </p>
+                <p style="color: #334155; line-height: 1.7; margin-bottom: 20px;">
+                    RESPIN-S1.0 is the largest publicly available dialect-rich read-speech corpus for Indian
+                    languages, comprising more than 10,000 hours of validated audio across nine languages —
+                    Bengali, Bhojpuri, Chhattisgarhi, Hindi, Kannada, Magahi, Maithili, Marathi, and Telugu —
+                    spanning 38+ dialects and two domains (agriculture and finance). The paper benchmarks several
+                    ASR architectures, including the E-Branchformer model used on this page, and shows that
+                    fine-tuning on RESPIN significantly improves recognition accuracy over pretrained baselines.
+                </p>
+                <a href="https://openreview.net/pdf?id=qL8M2dOY4L" target="_blank" rel="noopener noreferrer" class="neon-btn">
+                    Read Full Paper (PDF) →
+                </a>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer Section -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-branding">
+                <div class="footer-logo-row">
+                    <img src="{% static 'images/Spire logo.png' %}?v=3" alt="SPIRE LAB Logo" class="footer-logo">
+                    <span class="footer-brand-title">SPIRE MODELS</span>
+                </div>
+                <p style="margin-top: 10px; font-size: 0.9rem; line-height: 1.6;">
+                    Signal Processing Interpretation and REpresentation LABoratory.<br>
+                    Electrical Engineering Department,<br>
+                    Indian Institute of Science (IISc), Bangalore, India.
+                </p>
+
+                <div class="footer-external-logos">
+                    <a href="https://spire.ee.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="SPIRE LAB Official Website">
+                        <img src="{% static 'images/images.jpeg' %}" alt="SPIRE LAB">
+                    </a>
+                    <a href="https://www.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="IISc Official Website">
+                        <img src="{% static 'images/IISc logo.jpg' %}" alt="IISc">
+                    </a>
+                </div>
+            </div>
+
+            <div></div>
+
+            <div class="footer-contact-col">
+                <h4>Contact Channels</h4>
+                <p><strong>Email:</strong> spirelab.ee@iisc.ac.in</p>
+                
+                <p><strong>Address:</strong> SPIRE LAB, Room No. EE C 326, Department of Electrical Engineering, Indian Institute of Science (IISc), Bangalore-560012, Karnataka, India</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 SPIRE LAB, IISc Bangalore. All Rights Reserved.</p>
+            <p>Designed for Advanced Speech Intelligence Operations</p>
+        </div>
+    </footer>
+
+</body>
+</html>

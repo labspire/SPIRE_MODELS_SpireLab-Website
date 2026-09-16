@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | SPIRE LAB</title>
+    <link rel="icon" type="image/png" href="{% static 'images/spire logo.png' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=5">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="{% url 'home' %}" class="brand-wrapper">
+                <img src="{% static 'images/Spire logo.png' %}?v=3" alt="SPIRE LAB" class="header-logo">
+                <div class="brand-text-block">
+                    <span class="brand-title">SPIRE MOLDES</span>
+                    <span class="brand-tag">Indian Institute of Science (IISc)</span>
+                </div>
+            </a>
+
+            <div class="nav-menu-wrapper">
+                <nav>
+                    <ul class="top-nav-links">
+
+                        <li class="context-menu-container languages-nav-item">
+                            <a href="{% url 'languages_page' %}">Languages</a>
+                            <div class="dropdown-panel lang-dropdown-panel">
+                                <div class="lang-pill-grid">
+                                    <span class="lang-pill-item">Bengali</span>
+                                    <span class="lang-pill-item">Bhojpuri</span>
+                                    <span class="lang-pill-item">Chhattisgarhi</span>
+                                    <span class="lang-pill-item">Hindi</span>
+                                  <span class="lang-pill-item">Kannada</span>
+                                    <span class="lang-pill-item">Magahi</span>
+                                    <span class="lang-pill-item">Maithili</span>
+                                   <span class="lang-pill-item">Marathi</span>
+                                    <span class="lang-pill-item">Telugu</span>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="context-menu-container models-nav-item">
+                            <a href="{% url 'models_page' %}">Models</a>
+                            <div class="dropdown-panel">
+                                <a href="{% url 'model_asr' %}">1. Automatic Speech Recognition (ASR)</a>
+                                <a href="{% url 'model_lid' %}">2. Language Identification (LID)</a>
+                                <a href="{% url 'model_dialect' %}">3. Dialect Identification</a>
+                            </div>
+                        </li>
+
+                        <li><a href="{% url 'leaderboard_page' %}">Leaderboard</a></li>
+                       
+                        <li><a href="{% url 'api_keys_page' %}">API Keys</a></li>
+                        <li><a href="{% url 'publications_page' %}">Publications</a></li>
+                    </ul>
+                </nav>
+
+                <div class="context-menu-container">
+                    <button class="dots-menu-btn">&#8942;</button>
+                    <div class="dropdown-panel">
+                        <a href="{% url 'publications_page' %}">About Laboratory</a>
+                        <a href="{% url 'publications_page' %}">Publications Archive</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section" id="hero" style="min-height: 30vh;">
+        <div class="hero-content-wrapper">
+            <h1 class="hero-title" style="font-size: 3.5rem; letter-spacing: 6px;">PUBLICATIONS</h1>
+            <p class="hero-subtitle">Peer-Reviewed Research from SPIRE LAB, IISc</p>
+            <center><div class="full-accent-line"></div></center>
+        </div>
+    </section>
+
+    <section class="sliding-section">
+
+        {% if years %}
+        <div class="year-tab-bar">
+            {% for year in years %}
+            <div class="year-tab {% if forloop.first %}active{% endif %}" data-year="{{ year }}" onclick="showYear({{ year }})">
+                {{ year }}
+            </div>
+            {% endfor %}
+        </div>
+
+        {% for year, pubs in publications_by_year.items %}
+        <div class="pub-year-group {% if forloop.first %}active{% endif %}" id="year-{{ year }}">
+            {% for pub in pubs %}
+            <a href="{% url 'publication_detail' pub.slug %}" class="pub-entry">
+                <div>
+                    <div class="pub-title">{{ pub.title }}</div>
+                    <div class="pub-authors">{{ pub.authors }}</div>
+                </div>
+                <span class="pub-arrow">&#8594;</span>
+            </a>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        {% else %}
+        <p class="no-pubs-msg">No publications added yet.</p>
+        {% endif %}
+
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+
+            <div class="footer-branding">
+                <div class="footer-logo-row">
+                    <img src="{% static 'images/Spire logo.png' %}?v=3" alt="SPIRE LAB Logo" class="footer-logo">
+                    <span class="footer-brand-title">SPIRE MODELS</span>
+                </div>
+                <p style="margin-top: 10px; font-size: 0.9rem; line-height: 1.6;">
+                    Signal Processing Interpretation and REpresentation LABoratory.<br>
+                    Electrical Engineering Department,<br>
+                    Indian Institute of Science (IISc), Bangalore, India.
+                </p>
+
+                <div class="footer-external-logos">
+                    <a href="https://spire.ee.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="SPIRE LAB Official Website">
+                        <img src="{% static 'images/images.jpeg' %}" alt="SPIRE LAB">
+                    </a>
+                    <a href="https://www.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="IISc Official Website">
+                        <img src="{% static 'images/IISc logo.jpg' %}" alt="IISc">
+                    </a>
+                </div>
+            </div>
+
+            <div></div>
+
+            <div class="footer-contact-col">
+                <h4>Contact Channels</h4>
+                <p><strong>Email:</strong> spirelab.ee@iisc.ac.in</p>
+                
+                <p><strong>Address:</strong> SPIRE LAB, Room No. EE C 326, Department of Electrical Engineering, Indian Institute of Science (IISc), Bangalore-560012, Karnataka, India</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 SPIRE LAB, IISc Bangalore. All Rights Reserved.</p>
+            <p>Designed for Advanced Speech Intelligence Operations</p>
+        </div>
+    </footer>
+
+    <script>
+        function showYear(year) {
+            document.querySelectorAll('.pub-year-group').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            document.querySelectorAll('.year-tab').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            document.getElementById('year-' + year).classList.add('active');
+            document.querySelector('.year-tab[data-year="' + year + '"]').classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

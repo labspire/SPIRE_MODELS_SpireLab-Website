@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | SPIRE LAB</title>
+    <link rel="icon" type="image/png" href="{% static 'images/spire logo.png' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=14">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="{% url 'home' %}" class="brand-wrapper">
+                <img src="{% static 'images/spire logo.png' %}?v=3" alt="SPIRE LAB" class="header-logo">
+                <div class="brand-text-block">
+                    <span class="brand-title">SPIRE LAB</span>
+                    <span class="brand-tag">Indian Institute of Science (IISc)</span>
+                </div>
+            </a>
+            <div class="nav-menu-wrapper">
+                <nav>
+                    <ul class="top-nav-links">
+                        <li class="context-menu-container languages-nav-item">
+                            <a href="{% url 'languages_page' %}">Languages</a>
+                            <div class="dropdown-panel lang-dropdown-panel">
+                                <div class="lang-pill-grid">
+                                    <span class="lang-pill-item">Bengali</span>
+                                    <span class="lang-pill-item">Bhojpuri</span>
+                                    <span class="lang-pill-item">Chhattisgarhi</span>
+                                    <span class="lang-pill-item">Hindi</span>
+                                  <span class="lang-pill-item">Kannada</span>
+                                    <span class="lang-pill-item">Magahi</span>
+                                    <span class="lang-pill-item">Maithili</span>
+                                   <span class="lang-pill-item">Marathi</span>
+                                    <span class="lang-pill-item">Telugu</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="context-menu-container models-nav-item">
+                            <a href="{% url 'models_page' %}">Models</a>
+                            <div class="dropdown-panel">
+                                <a href="{% url 'model_asr' %}">1. Automatic Speech Recognition (ASR)</a>
+                                <a href="{% url 'model_lid' %}">2. Language Identification (LID)</a>
+                                <a href="{% url 'model_dialect' %}">3. Dialect Identification</a>
+                            </div>
+                        </li>
+                        <li><a href="{% url 'leaderboard_page' %}">Leaderboard</a></li>
+                       
+                        <li><a href="{% url 'api_keys_page' %}">API Keys</a></li>
+                        <li><a href="{% url 'publications_page' %}">Publications</a></li>
+                    </ul>
+                </nav>
+                <div class="context-menu-container">
+                    <button class="dots-menu-btn">&#8942;</button>
+                    <div class="dropdown-panel">
+                        <a href="{% url 'publications_page' %}">About Laboratory</a>
+                        <a href="{% url 'publications_page' %}">Publications Archive</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section style="min-height: 65vh; width: 100%; display: flex; align-items: center; justify-content: center; text-align: center; padding: 80px 40px; box-sizing: border-box;">
+        <div style="max-width: 520px; margin: 0 auto;">
+            <div style="font-size: 3.5rem; margin-bottom: 24px; line-height: 1;">🚧</div>
+            <h1 style="font-size: 2.2rem; font-weight: 800; color: #0f172a; margin: 0 0 18px 0; text-transform: uppercase; letter-spacing: 1px;">
+                Work In Progress
+            </h1>
+            <p style="font-size: 1.05rem; color: #64748b; line-height: 1.8; margin: 0 0 36px 0;">
+                This page is currently under construction. We're working on it — check back soon for an update!
+            </p>
+            <a href="{% url 'home' %}" class="neon-btn" style="display: inline-block; padding: 14px 30px;">Back to Home →</a>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-branding">
+                <div class="footer-logo-row">
+                    <img src="{% static 'images/spire logo.png' %}?v=3" alt="SPIRE LAB Logo" class="footer-logo">
+                    <span class="footer-brand-title">SPIRE MODELS</span>
+                </div>
+                <p style="margin-top: 10px; font-size: 0.9rem; line-height: 1.6;">
+                    Signal Processing Interpretation and REpresentation LABoratory.<br>
+                    Electrical Engineering Department,<br>
+                    Indian Institute of Science (IISc), Bangalore, India.
+                </p>
+                <div class="footer-external-logos">
+                    <a href="https://spire.ee.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="SPIRE LAB Official Website">
+                        <img src="{% static 'images/images.jpeg' %}" alt="SPIRE LAB">
+                    </a>
+                    <a href="https://www.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="IISc Official Website">
+                        <img src="{% static 'images/IISc logo.png' %}" alt="IISc">
+                    </a>
+                </div>
+            </div>
+            <div></div>
+            <div class="footer-contact-col">
+                <h4>Contact Channels</h4>
+                <p><strong>Email:</strong> spirelab.ee@iisc.ac.in</p>
+                
+                <p><strong>Address:</strong> SPIRE LAB, Room No. EE C 326, Department of Electrical Engineering, Indian Institute of Science (IISc), Bangalore-560012, Karnataka, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 SPIRE LAB, IISc Bangalore. All Rights Reserved.</p>
+            <p>Designed for Advanced Speech Intelligence Operations</p>
+        </div>
+    </footer>
+
+</body>
+</html>

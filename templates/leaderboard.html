@@ -1,0 +1,375 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | SPIRE LAB</title>
+    <link rel="icon" type="image/png" href="{% static 'images/spire logo.png' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=13">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="{% url 'home' %}" class="brand-wrapper">
+                <img src="{% static 'images/spire logo.png' %}?v=3" alt="SPIRE LAB" class="header-logo">
+                <div class="brand-text-block">
+                    <span class="brand-title">SPIRE LAB</span>
+                    <span class="brand-tag">Indian Institute of Science (IISc)</span>
+                </div>
+            </a>
+            <div class="nav-menu-wrapper">
+                <nav>
+                    <ul class="top-nav-links">
+                        <li class="context-menu-container languages-nav-item">
+                            <a href="{% url 'languages_page' %}">Languages</a>
+                            <div class="dropdown-panel lang-dropdown-panel">
+                                <div class="lang-pill-grid">
+                                    <span class="lang-pill-item">Bengali</span>
+                                    <span class="lang-pill-item">Bhojpuri</span>
+                                    <span class="lang-pill-item">Chhattisgarhi</span>
+                                    <span class="lang-pill-item">Hindi</span>
+                                  <span class="lang-pill-item">Kannada</span>
+                                    <span class="lang-pill-item">Magahi</span>
+                                    <span class="lang-pill-item">Maithili</span>
+                                   <span class="lang-pill-item">Marathi</span>
+                                    <span class="lang-pill-item">Telugu</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="context-menu-container models-nav-item">
+                            <a href="{% url 'models_page' %}">Models</a>
+                            <div class="dropdown-panel">
+                                <a href="{% url 'model_asr' %}">1. Automatic Speech Recognition (ASR)</a>
+                                <a href="{% url 'model_lid' %}">2. Language Identification (LID)</a>
+                                <a href="{% url 'model_dialect' %}">3. Dialect Identification</a>
+                            </div>
+                        </li>
+                        <li><a href="{% url 'leaderboard_page' %}" style="color: #991b1b; font-weight: 700;">Leaderboard</a></li>
+                        
+                        <li><a href="{% url 'api_keys_page' %}">API Keys</a></li>
+                        <li><a href="{% url 'publications_page' %}">Publications</a></li>
+                    </ul>
+                </nav>
+                <div class="context-menu-container">
+                    <button class="dots-menu-btn">&#8942;</button>
+                    <div class="dropdown-panel">
+                        <a href="{% url 'publications_page' %}">About Laboratory</a>
+                        <a href="{% url 'publications_page' %}">Publications Archive</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section" id="hero" style="min-height: 30vh;">
+        <div class="hero-content-wrapper">
+            <h1 class="hero-title" style="font-size: 3.5rem; letter-spacing: 6px;">LEADERBOARD</h1>
+            <p class="hero-subtitle">ASR Model Performance — CER &amp; WER Across 9 Indian Languages</p>
+            <center><div class="full-accent-line"></div></center>
+        </div>
+    </section>
+
+    <section class="sliding-section">
+
+        <div class="leaderboard-filters">
+            <div class="filter-group">
+                <label>Select Language</label>
+                <div class="custom-dropdown" id="languageDropdown">
+                    <button type="button" class="custom-dropdown-btn" onclick="toggleDropdown('languageDropdownPanel')">
+                        <span id="languageDropdownLabel">Language: {{ current_language_name }}</span>
+                        <span class="custom-dropdown-chevron">▾</span>
+                    </button>
+                    <div class="custom-dropdown-panel" id="languageDropdownPanel">
+                        <div class="custom-dropdown-panel-title">Select Language</div>
+                        {% for code, name in lang_columns %}
+                        <div class="custom-dropdown-option {% if code == current_language %}selected{% endif %}" data-lang-code="{{ code }}" onclick="selectLanguage('{{ code }}')">
+                            <span class="radio-circle"></span> {{ name }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label>Display Metric</label>
+                <div class="custom-dropdown" id="metricDropdown">
+                    <button type="button" class="custom-dropdown-btn" onclick="toggleDropdown('metricDropdownPanel')">
+                        <span id="metricDropdownLabel">{{ current_metric_label }}</span>
+                        <span class="custom-dropdown-chevron">▾</span>
+                    </button>
+                    <div class="custom-dropdown-panel" id="metricDropdownPanel">
+                        <div class="custom-dropdown-panel-title">Select Metric</div>
+                        <div class="custom-dropdown-option {% if current_metric == 'both' %}selected{% endif %}" data-metric="both" onclick="selectMetric('both')">
+                            <span class="radio-circle"></span> Both (CER &amp; WER)
+                        </div>
+                        <div class="custom-dropdown-option {% if current_metric == 'wer' %}selected{% endif %}" data-metric="wer" onclick="selectMetric('wer')">
+                            <span class="radio-circle"></span> WER (Word Error Rate)
+                        </div>
+                        <div class="custom-dropdown-option {% if current_metric == 'cer' %}selected{% endif %}" data-metric="cer" onclick="selectMetric('cer')">
+                            <span class="radio-circle"></span> CER (Character Error Rate)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="leaderboard-hint">
+            Click any column header to rank by that score. Lower error rate is better.
+        </p>
+
+        <div class="leaderboard-table-wrapper" id="leaderboardTable">
+            <table class="leaderboard-grouped-table" id="leaderboardTableEl">
+                <thead id="leaderboardThead"></thead>
+                <tbody id="leaderboardTbody"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-branding">
+                <div class="footer-logo-row">
+                    <img src="{% static 'images/spire logo.png' %}?v=3" alt="SPIRE LAB Logo" class="footer-logo">
+                    <span class="footer-brand-title">SPIRE MODELS</span>
+                </div>
+                <p style="margin-top: 10px; font-size: 0.9rem; line-height: 1.6;">
+                    Signal Processing Interpretation and REpresentation LABoratory.<br>
+                    Electrical Engineering Department,<br>
+                    Indian Institute of Science (IISc), Bangalore, India.
+                </p>
+                <div class="footer-external-logos">
+                    <a href="https://spire.ee.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="SPIRE LAB Official Website">
+                        <img src="{% static 'images/images.jpeg' %}" alt="SPIRE LAB">
+                    </a>
+                    <a href="https://www.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="IISc Official Website">
+                        <img src="{% static 'images/IISc logo.jpg' %}" alt="IISc">
+                    </a>
+                </div>
+            </div>
+            <div></div>
+            <div class="footer-contact-col">
+                <h4>Contact Channels</h4>
+                <p><strong>Email:</strong> spirelab.ee@iisc.ac.in</p>
+                
+                <p><strong>Address:</strong> SPIRE LAB, Room No. EE C 326, Department of Electrical Engineering, Indian Institute of Science (IISc), Bangalore-560012, Karnataka, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 SPIRE LAB, IISc Bangalore. All Rights Reserved.</p>
+            <p>Designed for Advanced Speech Intelligence Operations</p>
+        </div>
+    </footer>
+
+    <script>
+        // ---------- Dropdown open/close ----------
+        function toggleDropdown(panelId) {
+            const panel = document.getElementById(panelId);
+            const wrapper = panel.closest('.custom-dropdown');
+            const isOpen = panel.classList.contains('open');
+
+            document.querySelectorAll('.custom-dropdown-panel').forEach(p => p.classList.remove('open'));
+            document.querySelectorAll('.custom-dropdown').forEach(d => d.classList.remove('open'));
+
+            if (!isOpen) {
+                panel.classList.add('open');
+                wrapper.classList.add('open');
+            }
+        }
+
+        document.addEventListener('click', function (e) {
+            document.querySelectorAll('.custom-dropdown').forEach(function (dd) {
+                if (!dd.contains(e.target)) {
+                    dd.classList.remove('open');
+                    const panel = dd.querySelector('.custom-dropdown-panel');
+                    if (panel) panel.classList.remove('open');
+                }
+            });
+        });
+
+        // ---------- State ----------
+        let state = {
+            language: "{{ current_language }}",
+            metric: "{{ current_metric }}",
+            sort: "{{ current_sort }}",
+            order: "{{ current_order }}"
+        };
+
+        function buildUrl() {
+            return "{% url 'leaderboard_page' %}?language=" + state.language +
+                "&metric=" + state.metric +
+                "&sort=" + state.sort +
+                "&order=" + state.order;
+        }
+
+        function loadLeaderboard() {
+            const url = buildUrl();
+            fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                .then(function (response) { return response.json(); })
+                .then(function (data) {
+                    state.language = data.current_language;
+                    state.metric = data.current_metric;
+                    state.sort = data.current_sort;
+                    state.order = data.current_order;
+
+                    document.getElementById('languageDropdownLabel').textContent = 'Language: ' + data.current_language_name;
+                    document.getElementById('metricDropdownLabel').textContent = data.current_metric_label;
+
+                    document.querySelectorAll('#languageDropdownPanel .custom-dropdown-option').forEach(function (opt) {
+                        opt.classList.toggle('selected', opt.getAttribute('data-lang-code') === data.current_language);
+                    });
+                    document.querySelectorAll('#metricDropdownPanel .custom-dropdown-option').forEach(function (opt) {
+                        opt.classList.toggle('selected', opt.getAttribute('data-metric') === data.current_metric);
+                    });
+
+                    renderTable(data);
+                    window.history.pushState({}, '', url);
+                })
+                .catch(function (err) {
+                    console.error('Leaderboard load failed:', err);
+                });
+        }
+
+        function selectLanguage(code) {
+            state.language = code;
+            loadLeaderboard();
+        }
+
+        function selectMetric(metric) {
+            state.metric = metric;
+            loadLeaderboard();
+        }
+
+        function sortIcon(data, key) {
+            if (data.current_sort === key) {
+                return data.current_order === 'asc' ? ' ▲' : ' ▼';
+            }
+            return ' ⇅';
+        }
+
+        function nextOrder(data, key) {
+            return (data.current_sort === key && data.current_order === 'asc') ? 'desc' : 'asc';
+        }
+
+        function sortLinkAttrs(data, key) {
+            return 'data-sort-key="' + key + '" data-next-order="' + nextOrder(data, key) + '"';
+        }
+
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str);
+        }
+
+        function renderTable(data) {
+            const langColumns = data.lang_columns;
+            const thead = document.getElementById('leaderboardThead');
+            const tbody = document.getElementById('leaderboardTbody');
+
+            if (data.current_metric === 'both') {
+                let row1 = '<tr>' +
+                    '<th rowspan="2">Rank</th>' +
+                    '<th rowspan="2"><a href="#" class="sort-link' + (data.current_sort === 'model' ? ' active-sort' : '') + '" ' + sortLinkAttrs(data, 'model') + '>Model<span class="sort-icon">' + sortIcon(data, 'model') + '</span></a></th>' +
+                    '<th rowspan="2">Category</th>' +
+                    '<th colspan="' + (langColumns.length + 1) + '" class="group-header-cer">CER (%)</th>' +
+                    '<th colspan="' + (langColumns.length + 1) + '" class="group-header-wer">WER (%)</th>' +
+                    '</tr>';
+
+                let row2 = '<tr>';
+                langColumns.forEach(function (col, idx) {
+                    const key = 'cer_' + col[0];
+                    row2 += '<th' + (idx === 0 ? ' class="group-border"' : '') + '><a href="#" class="sort-link' + (data.current_sort === key ? ' active-sort' : '') + '" ' + sortLinkAttrs(data, key) + ' title="' + col[1] + '">' + col[0].toUpperCase() + '<span class="sort-icon">' + sortIcon(data, key) + '</span></a></th>';
+                });
+                row2 += '<th><a href="#" class="sort-link' + (data.current_sort === 'cer_avg' ? ' active-sort' : '') + '" ' + sortLinkAttrs(data, 'cer_avg') + '>Avg<span class="sort-icon">' + sortIcon(data, 'cer_avg') + '</span></a></th>';
+                langColumns.forEach(function (col, idx) {
+                    const key = 'wer_' + col[0];
+                    row2 += '<th' + (idx === 0 ? ' class="group-border"' : '') + '><a href="#" class="sort-link' + (data.current_sort === key ? ' active-sort' : '') + '" ' + sortLinkAttrs(data, key) + ' title="' + col[1] + '">' + col[0].toUpperCase() + '<span class="sort-icon">' + sortIcon(data, key) + '</span></a></th>';
+                });
+                row2 += '<th><a href="#" class="sort-link' + (data.current_sort === 'wer_avg' ? ' active-sort' : '') + '" ' + sortLinkAttrs(data, 'wer_avg') + '>Avg<span class="sort-icon">' + sortIcon(data, 'wer_avg') + '</span></a></th>';
+                row2 += '</tr>';
+
+                thead.innerHTML = row1 + row2;
+
+                if (data.rows.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="23" style="text-align:center; padding:30px; color:#64748b;">No leaderboard data available yet.</td></tr>';
+                } else {
+                    let body = '';
+                    data.rows.forEach(function (r) {
+                        body += '<tr>';
+                        body += '<td class="rank-cell">' +
+                            (r.rank === 1 ? '<span class="trophy-gold">&#127942;</span>' : '') +
+                            (r.rank === 2 ? '<span class="trophy-silver">&#127942;</span>' : '') +
+                            (r.rank === 3 ? '<span class="trophy-bronze">&#127942;</span>' : '') +
+                            r.rank + '</td>';
+                        body += '<td class="model-cell">' + (r.hf_link ? '<a href="' + r.hf_link + '" target="_blank" rel="noopener noreferrer" class="model-link">' + escapeHtml(r.model) + '</a>' : escapeHtml(r.model)) + '</td>';
+                        body += '<td class="category-cell">' + escapeHtml(r.category) + '</td>';
+                        r.cer_cells.forEach(function (cell, idx) {
+                            body += '<td' + (idx === 0 ? ' class="group-border"' : '') + '>' + (cell.val !== null ? '<span class="score-pill">' + cell.val + '%</span>' : '<span class="na-cell">—</span>') + '</td>';
+                        });
+                        body += '<td><span class="score-pill">' + r.cer_avg + '%</span></td>';
+                        r.wer_cells.forEach(function (cell, idx) {
+                            body += '<td' + (idx === 0 ? ' class="group-border"' : '') + '>' + (cell.val !== null ? '<span class="score-pill">' + cell.val + '%</span>' : '<span class="na-cell">—</span>') + '</td>';
+                        });
+                        body += '<td><span class="score-pill">' + r.wer_avg + '%</span></td>';
+                        body += '</tr>';
+                    });
+                    tbody.innerHTML = body;
+                }
+
+            } else {
+                const metricPrefix = data.current_metric;
+                let headerRow = '<tr>' +
+                    '<th>Rank</th>' +
+                    '<th><a href="#" class="sort-link' + (data.current_sort === 'model' ? ' active-sort' : '') + '" ' + sortLinkAttrs(data, 'model') + '>Model<span class="sort-icon">' + sortIcon(data, 'model') + '</span></a></th>' +
+                    '<th>Category</th>';
+                langColumns.forEach(function (col) {
+                    const key = metricPrefix + '_' + col[0];
+                    headerRow += '<th><a href="#" class="sort-link' + (data.current_sort === key ? ' active-sort' : '') + '" ' + sortLinkAttrs(data, key) + ' title="' + col[1] + '">' + col[0].toUpperCase() + '<span class="sort-icon">' + sortIcon(data, key) + '</span></a></th>';
+                });
+                const avgKey = metricPrefix + '_avg';
+                headerRow += '<th><a href="#" class="sort-link' + (data.current_sort === avgKey ? ' active-sort' : '') + '" ' + sortLinkAttrs(data, avgKey) + '>Avg<span class="sort-icon">' + sortIcon(data, avgKey) + '</span></a></th>';
+                headerRow += '</tr>';
+                thead.innerHTML = headerRow;
+
+                if (data.rows.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="13" style="text-align:center; padding:30px; color:#64748b;">No leaderboard data available yet.</td></tr>';
+                } else {
+                    let body = '';
+                    data.rows.forEach(function (r) {
+                        body += '<tr>';
+                        body += '<td class="rank-cell">' +
+                            (r.rank === 1 ? '<span class="trophy-gold">&#127942;</span>' : '') +
+                            (r.rank === 2 ? '<span class="trophy-silver">&#127942;</span>' : '') +
+                            (r.rank === 3 ? '<span class="trophy-bronze">&#127942;</span>' : '') +
+                            r.rank + '</td>';
+                        body += '<td class="model-cell">' + (r.hf_link ? '<a href="' + r.hf_link + '" target="_blank" rel="noopener noreferrer" class="model-link">' + escapeHtml(r.model) + '</a>' : escapeHtml(r.model)) + '</td>';
+                        body += '<td class="category-cell">' + escapeHtml(r.category) + '</td>';
+                        const cells = metricPrefix === 'cer' ? r.cer_cells : r.wer_cells;
+                        const avgVal = metricPrefix === 'cer' ? r.cer_avg : r.wer_avg;
+                        cells.forEach(function (cell) {
+                            body += '<td>' + (cell.val !== null ? '<span class="score-pill">' + cell.val + '%</span>' : '<span class="na-cell">—</span>') + '</td>';
+                        });
+                        body += '<td><span class="score-pill">' + avgVal + '%</span></td>';
+                        body += '</tr>';
+                    });
+                    tbody.innerHTML = body;
+                }
+            }
+        }
+
+        // Delegate clicks on sort links (table gets replaced, so use delegation on the wrapper)
+        document.getElementById('leaderboardTable').addEventListener('click', function (e) {
+            const link = e.target.closest('.sort-link');
+            if (!link) return;
+            e.preventDefault();
+            state.sort = link.getAttribute('data-sort-key');
+            state.order = link.getAttribute('data-next-order');
+            loadLeaderboard();
+        });
+
+        // Initial render on page load
+        loadLeaderboard();
+    </script>
+
+</body>
+</html>

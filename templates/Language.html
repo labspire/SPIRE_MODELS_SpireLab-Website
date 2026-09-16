@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Languages | SPIRE LAB</title>
+    <!-- Favicon and Global Stylesheet Links -->
+    <link rel="icon" type="image/png" href="{% static 'images/spire logo.png' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=5">
+</head>
+<body>
+
+    <!-- Header and Navigation Section -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="{% url 'home' %}" class="brand-wrapper">
+                <img src="{% static 'images/Spire logo.png' %}?v=3" alt="SPIRE LAB" class="header-logo">
+                <div class="brand-text-block">
+                    <span class="brand-title">SPIRE MODELS</span>
+                    <span class="brand-tag">Indian Institute of Science (IISc)</span>
+                </div>
+            </a>
+
+            <div class="nav-menu-wrapper">
+                <nav>
+                    <ul class="top-nav-links">
+
+                        <!-- Languages Navigation Item with Dropdown -->
+                        <li class="context-menu-container languages-nav-item">
+                            <a href="{% url 'languages_page' %}">Languages</a>
+                            <div class="dropdown-panel lang-dropdown-panel">
+                                <div class="lang-pill-grid">
+                                    <span class="lang-pill-item">Bengali</span>
+                                    <span class="lang-pill-item">Bhojpuri</span>
+                                    <span class="lang-pill-item">Chhattisgarhi</span>
+                                    <span class="lang-pill-item">Hindi</span>
+                                    <span class="lang-pill-item">Kannada</span>
+                                    <span class="lang-pill-item">Magahi</span>
+                                    <span class="lang-pill-item">Maithili</span>
+                                    <span class="lang-pill-item">Marathi</span>
+                                    <span class="lang-pill-item">Telugu</span>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Models Navigation Item with Dropdown (Fixed URL mapping) -->
+                        <li class="context-menu-container models-nav-item">
+                            <a href="{% url 'models_page' %}">Models</a>
+                            <div class="dropdown-panel">
+                                <a href="{% url 'model_asr' %}">1. Automatic Speech Recognition (ASR)</a>
+                                <a href="{% url 'model_lid' %}">2. Language Identification (LID)</a>
+                                <a href="{% url 'model_dialect' %}">3. Dialect Identification</a>
+                            </div>
+                        </li>
+
+                        <li><a href="{% url 'leaderboard_page' %}">Leaderboard</a></li>
+                        <li><a href="{% url 'api_keys_page' %}">API Keys</a></li>
+                        <li><a href="{% url 'publications_page' %}">Publications</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Additional Context Options Menu -->
+                <div class="context-menu-container">
+                    <button class="dots-menu-btn">&#8942;</button>
+                    <div class="dropdown-panel">
+                        <a href="{% url 'publications_page' %}">About Laboratory</a>
+                        <a href="{% url 'publications_page' %}">Publications Archive</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section: Language Data Coverage -->
+    <section class="sliding-section">
+        <h2 class="section-head">Language Data Coverage</h2>
+        <p class="section-desc">
+            SPIRE LAB maintains large-scale speech and text corpora across 9 Indian languages to support research
+            and development in Automatic Speech Recognition, Language Identification, Dialect Identification, and
+            Text-to-Speech systems. Below is a summary of the primary corpus backing our language coverage.
+        </p>
+
+        <div class="corpus-highlight-card">
+            <h3>SYSPIN_S1.0 Corpus</h3>
+            <p class="corpus-subtitle">A TTS Corpus of 900+ hours in nine Indian Languages</p>
+            <p>
+                SYSPIN_S1.0 is the TTS corpus built as a part of the SYSPIN project at SPIRE lab, Indian Institute
+                of Science (IISc) Bangalore, India. It is the current largest TTS corpus comprising more than 47
+                hours of single speaker's speech (1 male and 1 female voice artist per language) in each of nine
+                Indian languages such as Hindi, Bengali, Marathi, Telugu, Bhojpuri, Kannada, Magahi, Chhattisgarhi,
+                and Maithili. This corpus is unique in terms of duration per speaker and the variety of domains
+                covered in the process of preparing the text in this corpora unlike existing TTS corpora in these
+                languages. This corpus allows research and development in TTS including multi-lingual learning on
+                studio-quality audio from multiple speakers, and different scripts for various languages, with
+                part of the corpus having parallel sentences for speakers in a language.
+            </p>
+            <p class="corpus-citation">
+                <strong>When this corpus is used, please cite the following reference:</strong><br>
+                Abhayjeet et al. 'SYSPIN_S1.0 Corpus - A TTS Corpus of 900+ hours in nine Indian Languages', 2025.
+            </p>
+        </div>
+    </section>
+
+    <!-- Language-Wise Data Availability Section -->
+    <div class="section-zebra-fill">
+        <section class="sliding-section">
+            <h2 class="section-head">Language-Wise Data Availability</h2>
+            <p class="section-desc">
+                Each of the following languages is backed by studio-quality speech data collected under the
+                SYSPIN project, with dedicated male and female voice artists per language.
+            </p>
+
+            <div class="matrix-container">
+                <div class="ml-card">
+                    <h3>Hindi</h3>
+                    <p>Part of the SYSPIN_S1.0 corpus - 47+ hours of single-speaker studio-quality TTS data (1 male, 1 female voice artist).</p>
+                </div>
+
+                <div class="ml-card">
+                    <h3>Bengali</h3>
+                    <p>Part of the SYSPIN_S1.0 corpus - 47+ hours of single-speaker studio-quality TTS data (1 male, 1 female voice artist).</p>
+                </div>
+
+                <div class="ml-card">
+                    <h3>Marathi</h3>
+                    <p>Part of the SYSPIN_S1.0 corpus - 47+ hours of single-speaker studio-quality TTS data (1 male, 1 female voice artist).</p>
+                </div>
+
+                <div class="ml-card">
+                    <h3>Telugu</h3>
+                    <p>Part of the SYSPIN_S1.0 corpus - 47+ hours of single-speaker studio-quality TTS data (1 male, 1 female voice artist).</p>
+                </div>
+
+                <div class="ml-card">
+                    <h3>Bhojpuri</h3>
+                    <p>Part of the SYSPIN_S1.0 corpus - 47+ hours of single-speaker studio-quality TTS data (1 male, 1 female voice artist).</p>
+                </div>
+
+                <div class="ml-card">
+                    <h3>Kannada</h3>
+                    <p>Part of the SYSPIN_S1.0 corpus - 47+ hours of single-speaker studio-quality TTS data (1 male, 1 female voice artist).</p>
+                </div>
+
+                <div class="ml-card">
+                    <h3>Magahi</h3>
+                    <p>Part of the SYSPIN_S1.0 corpus - 47+ hours of single-speaker studio-quality TTS data (1 male, 1 female voice artist).</p>
+                </div>
+
+                <div class="ml-card">
+                    <h3>Chhattisgarhi</h3>
+                    <p>Part of the SYSPIN_S1.0 corpus - 47+ hours of single-speaker studio-quality TTS data (1 male, 1 female voice artist).</p>
+                </div>
+
+                <div class="ml-card">
+                    <h3>Maithili</h3>
+                    <p>Part of the SYSPIN_S1.0 corpus - 47+ hours of single-speaker studio-quality TTS data (1 male, 1 female voice artist).</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-branding">
+                <div class="footer-logo-row">
+                    <img src="{% static 'images/Spire logo.png' %}?v=3" alt="SPIRE LAB Logo" class="footer-logo">
+                    <span class="footer-brand-title">SPIRE MODELS</span>
+                </div>
+                <p style="margin-top: 10px; font-size: 0.9rem; line-height: 1.6;">
+                    Signal Processing Interpretation and REpresentation LABoratory.<br>
+                    Electrical Engineering Department,<br>
+                    Indian Institute of Science (IISc), Bangalore, India.
+                </p>
+
+                <div class="footer-external-logos">
+                    <a href="https://spire.ee.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="SPIRE LAB Official Website">
+                        <img src="{% static 'images/images.jpeg' %}" alt="SPIRE LAB">
+                    </a>
+                    <a href="https://www.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="IISc Official Website">
+                        <img src="{% static 'images/IISc logo.jpg' %}" alt="IISc">
+                    </a>
+                </div>
+            </div>
+
+            <div></div>
+
+            <div class="footer-contact-col">
+                <h4>Contact Channels</h4>
+                <p><strong>Email:</strong> spirelab.ee@iisc.ac.in</p>
+                <p><strong>Address:</strong> SPIRE LAB, Room No. EE C 326, Department of Electrical Engineering, Indian Institute of Science (IISc), Bangalore-560012, Karnataka, India</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 SPIRE LAB, IISc Bangalore. All Rights Reserved.</p>
+            <p>Designed for Advanced Speech Intelligence Operations</p>
+        </div>
+    </footer>
+
+</body>
+</html>

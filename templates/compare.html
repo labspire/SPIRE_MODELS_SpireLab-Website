@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Models | SPIRE LAB</title>
+    <link rel="icon" type="image/png" href="{% static 'images/spire logo.png' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="{% url 'home' %}" class="brand-wrapper">
+                <div class="brand-text-block">
+                    <span class="brand-title">SPIRE LAB</span>
+                    <span class="brand-tag">Indian Institute of Science (IISc)</span>
+                </div>
+            </a>
+            
+            <div class="nav-menu-wrapper">
+                <nav>
+                    <ul class="top-nav-links">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'compare_page' %}" style="color: #991b1b; font-weight: 700;">Compare</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="section-zebra-fill">
+        <section class="sliding-section" id="compare">
+            <h2 class="section-head">Cross-Verification Engine</h2>
+            <p class="section-desc">
+                Evaluate different weights, language backbones, and decoding blocks in real time to isolate model degradation factors or performance improvements.
+            </p>
+            <div style="background: #ffffff; padding: 30px; border: 1px solid #e2e8f0; border-radius: 8px; text-align: center; color: #64748b; font-weight: 600;">
+                Comparative evaluation console initializing... Select primary model checkpoints to generate cross-validation metrics.
+            </div>
+        </section>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 SPIRE LAB, IISc Bangalore. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
