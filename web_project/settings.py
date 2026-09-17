@@ -23,7 +23,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    '192.168.1.141',
+    '10.64.26.24',  # Lab server IP
 ]
 
 # 'localhost',
