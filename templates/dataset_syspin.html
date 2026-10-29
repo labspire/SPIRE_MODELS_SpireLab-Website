@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSPIN S1.0 | SPIRE Models Console</title>
+    <link rel="icon" type="image/png" href="{% static 'images/spire logo.png' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=999">
+</head>
+<body>
+
+    <!-- HEADER NAVIGATION -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="{% url 'home' %}" class="brand-wrapper">
+                <img src="{% static 'images/spire logo.png' %}?v=3" alt="SPIRE LAB" class="header-logo">
+                <div class="brand-text-block">
+                    <span class="brand-title">SPIRE MODELS</span>
+                    <span class="brand-tag">Indian Institute of Science (IISc)</span>
+                </div>
+            </a>
+            
+            <div class="nav-menu-wrapper">
+                <nav>
+                    <ul class="top-nav-links">
+                        <li><a href="{% url 'dataset_syspin' %}">Language</a></li>
+                        <li><a href="{% url 'dataset_syspin_models' %}">Models</a></li>
+                        <li><a href="{% url 'dataset_syspin_leaderboard' %}">Leaderboard</a></li>
+                        <li><a href="{% url 'dataset_syspin_apikeys' %}">API Keys</a></li>
+                        <li><a href="{% url 'dataset_syspin_pubs' %}">Publications</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- SYSPIN HERO SECTION -->
+    <section class="dataset-hero">
+        <div class="dataset-meta-badge">Multilingual TTS Corpus &amp; Checkpoints</div>
+        <h1 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 10px;">SYSPIN S1.0 Multilingual TTS</h1>
+        <p style="color: #64748b; font-size: 1.05rem; max-width: 800px; line-height: 1.6;">
+            Multi-speaker expressive text-to-speech model weights optimized for studio-quality synthesis across multiple Indian languages.
+        </p>
+    </section>
+
+    <!-- SYSPIN OVERVIEW SECTION (Added from official details) -->
+    <section class="syspin-overview-section" style="padding: 20px 40px 40px 40px; background-color: #ffffff; text-align: center;">
+        <div class="portal-wide-container" style="max-width: 1200px; margin: 0 auto;">
+            
+            <h2 style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin-bottom: 12px; text-transform: uppercase;">About SYSPIN Project</h2>
+            <p style="font-size: 1rem; color: #475569; line-height: 1.7; max-width: 900px; margin: 0 auto 30px auto;">
+                <strong>SYSPIN</strong> (Synthesizing Speech in Indian Languages) is a foundational initiative from SPIRE Lab, IISc, aimed at developing studio-quality Text-to-Speech (TTS) corpora and advanced AI models across major Indian languages to shape inclusive and accessible voice technologies.
+            </p>
+
+            <!-- Stats Grid Cards -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; text-align: left; margin-top: 20px;">
+                
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 24px; border-radius: 12px;">
+                    <h3 style="font-size: 1.1rem; font-weight: 700; color: #7f1d1d; margin-bottom: 8px;">9 Indian Languages</h3>
+                    <p style="font-size: 0.9rem; color: #64748b; margin: 0; line-height: 1.5;">
+                        Covers Bengali, Bhojpuri, Chhattisgarhi, Hindi, Kannada, Magahi, Maithili, Marathi, and Telugu.
+                    </p>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 24px; border-radius: 12px;">
+                    <h3 style="font-size: 1.1rem; font-weight: 700; color: #7f1d1d; margin-bottom: 8px;">900+ Hours Corpus</h3>
+                    <p style="font-size: 0.9rem; color: #64748b; margin: 0; line-height: 1.5;">
+                        High-fidelity studio recordings featuring professional gender-balanced voice artists.
+                    </p>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 24px; border-radius: 12px;">
+                    <h3 style="font-size: 1.1rem; font-weight: 700; color: #7f1d1d; margin-bottom: 8px;">Advanced TTS Models</h3>
+                    <p style="font-size: 0.9rem; color: #64748b; margin: 0; line-height: 1.5;">
+                        Open-source synthetic models and multi-speaker benchmarks designed to empower regional digital tools.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTENT AREA (Models & Leaderboard Placeholders) -->
+    <div class="content-container" style="padding: 20px 40px 60px 40px; max-width: 1200px; margin: 0 auto;">
+        
+        <h2 style="font-size: 1.3rem; color: #1e293b; margin-bottom: 5px;">Dataset Model Suite</h2>
+        <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">Pre-trained neural checkpoints and vocoders associated with SYSPIN S1.0.</p>
+        <div class="dummy-table-box">
+            <p style="color: #94a3b8; font-style: italic; text-align: center; padding: 30px;">[ SYSPIN Model architectures, weights, and inference pipelines will be updated here... ]</p>
+        </div>
+
+        <h2 style="font-size: 1.3rem; color: #1e293b; margin-top: 40px; margin-bottom: 5px;">SYSPIN S1.0 Performance Leaderboard</h2>
+        <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">Evaluation metrics comparing MOS, synthesis accuracy, and prosody scores.</p>
+        <div class="dummy-table-box">
+            <p style="color: #94a3b8; font-style: italic; text-align: center; padding: 30px;">[ Leaderboard benchmarks and evaluation metrics for SYSPIN will be listed here... ]</p>
+        </div>
+
+    </div>
+
+   <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-branding">
+                <div class="footer-logo-row">
+                    <img src="{% static 'images/spire logo.png' %}?v=3" alt="SPIRE LAB Logo" class="footer-logo">
+                    <span class="footer-brand-title">SPIRE MODELS</span>
+                </div>
+                <p style="margin-top: 10px; font-size: 0.88rem; line-height: 1.6;">
+                    Signal Processing Interpretation and REpresentation LABoratory.<br>
+                    Electrical Engineering Department,<br>
+                    Indian Institute of Science (IISc), Bangalore, India.
+                </p>
+                <div class="footer-external-logos">
+                    <a href="https://spire.ee.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="SPIRE LAB Official Website">
+                        <img src="{% static 'images/images.jpeg' %}" alt="SPIRE LAB">
+                    </a>
+                    <a href="https://www.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="IISc Official Website">
+                        <img src="{% static 'images/IISc logo.jpg' %}" alt="IISc">
+                    </a>
+                </div>
+            </div>
+
+            <div></div>
+
+            <div class="portal-contact-col footer-contact-col">
+                <h4>Contact Channels</h4>
+                <p><strong>Email:</strong> spirelab.ee@iisc.ac.in</p>
+                <p><strong>Address:</strong> SPIRE LAB, Room No. EE C 326, Department of Electrical Engineering, Indian Institute of Science (IISc), Bangalore-560012, Karnataka, India</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 SPIRE LAB, IISc Bangalore. All Rights Reserved.</p>
+            <p>Designed for Advanced Speech Intelligence Operations</p>
+        </div>
+    </footer>
+
+</body>
+</html>

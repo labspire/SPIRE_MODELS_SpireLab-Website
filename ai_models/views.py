@@ -216,7 +216,6 @@ def leaderboard_page(request):
         "current_language_name": current_language_name,
     }
 
-    # If this request came from JavaScript (AJAX), return JSON instead of a full page reload
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         return JsonResponse(context)
 
@@ -318,8 +317,6 @@ PUBLICATIONS = [
 def publications_page(request):
     years = sorted({pub["year"] for pub in PUBLICATIONS}, reverse=True)
 
-    # Build a short "First Author, et al." version of the author list
-    # for the list view, without touching the original full author string.
     publications_by_year = {}
     for year in years:
         year_pubs = []
@@ -343,3 +340,129 @@ def publication_detail(request, slug):
     if pub is None:
         raise Http404("Publication not found")
     return render(request, 'publication_detail.html', {"pub": pub})
+
+def syspin_view(request):
+    return render(request, 'dataset_syspin.html')
+
+def syspin_languages_view(request):
+    return render(request, 'dataset_syspin_languages.html')
+
+def syspin_models_view(request):
+    return render(request, 'dataset_syspin_models.html')
+
+def syspin_leaderboard_view(request):
+    return render(request, 'dataset_syspin_leaderboard.html')
+
+def syspin_apikeys_view(request):
+    return render(request, 'dataset_syspin_apikeys.html')
+
+# SYSPIN Publications View updated with LIMMITS 25 and LIMMITS 24 under 2025/respective structure
+def syspin_publications_view(request):
+    publications = {
+        '2025': [
+            {
+                'title': 'LIMMITS 25: Multilingual Streaming TTS With Neural Codecs for Indian Languages',
+                'author': 'P. Olbrich et al.',
+                'full_authors': 'P. Olbrich, H. A. Murthy, P. Kumar, S. Watanabe, S. Zhao and M. Hasegawa-Johnson',
+                'abstract': 'This work provides a summary of the Multilingual streaming TTS with neural codecs for Indian languages challenge (LIMMITS 25), organized as part of the ICASSP 2025 signal processing grand challenge. Towards this, 278 hours of TTS data in 4 Indian languages - Gujarati, Indian English, Bhojpuri, and Kannada got released.',
+                'link': 'https://ieeexplore.ieee.org/abstract/document/10890595'
+            },
+            {
+                'title': "LIMMITS'24: MULTI-SPEAKER, MULTI-LINGUAL INDIC TTS WITH VOICE CLONING",
+                'author': 'S. Udupa et al.',
+                'full_authors': 'S. Udupa et al.',
+                'abstract': 'The Multi-speaker, Multi-lingual Indic Text to Speech (TTS) with voice cloning (LIMMITS 24) challenge is organized as part of the ICASSP 2024 signal processing grand challenge. LIMMITS 24 aims at the development of voice cloning for the multi-speaker, multi-lingual Text-to-Speech (TTS) model. Towards this, 80 hours of TTS data has been released in each of Bengali, Chhattisgarhi, English (Indian), and Kannada languages.',
+                'link': 'https://www.researchgate.net/publication/388201808_LIMMITS%2724_MULTI-SPEAKER_MULTI-LINGUAL_INDIC_TTS_WITH_VOICE_CLONING'
+            }
+        ],
+        '2024': [
+            {
+                'title': 'LIMMITS 24: Multi-Speaker, Multi-Lingual Indic TTS with Voice Cloning',
+                'author': 'A. Singh et al.',
+                'full_authors': 'A. Singh et al.',
+                'abstract': 'The Multi-speaker, Multi-lingual Indic Text to Speech (TTS) with voice cloning (LIMMITS 24) challenge is organized as part of the ICASSP 2024 signal processing grand challenge. LIMMITS 24 aims at the development of voice cloning for multi-speaker, multi-lingual Text-to-Speech (TTS) model.',
+                'link': 'https://ieeexplore.ieee.org/document/10626897'
+            },
+            {
+                'title': 'Lightweight, Multi-Speaker, Multi-Lingual Indic Text-to-Speech',
+                'author': 'A. Singh et al.',
+                'full_authors': 'A. Singh et al.',
+                'abstract': 'The Lightweight, Multi-speaker, Multi-lingual Indic Text-to-Speech (LIMMITS 23) challenge is organized as part of the ICASSP 2023 Signal Processing Grand Challenge. LIMMITS 23 aims at the development of a lightweight, multi-speaker, multi-lingual Text to Speech (TTS) model using datasets in Marathi, Hindi, and Telugu, with at least 40 hours of data released for each of the male and female voice artists in each language.',
+                'link': 'https://ieeexplore.ieee.org/abstract/document/10479171'
+            },
+            {
+                'title': 'IndicMOS: Multilingual MOS Prediction for 7 Indian languages',
+                'author': 'Udupa, Sathvik et al.',
+                'full_authors': 'Udupa, Sathvik & Maiti, Soumi & Ghosh, Prasanta',
+                'abstract': 'Subjective evaluation is the gold standard for the evaluation of speech in different tasks such as text-to-speech (TTS), and voice-cloning (VC). However, these evaluations can be costly, time-consuming, and not easily scalable. Therefore, to tackle these challenges, we propose IndicMOS, a multilingual MOS predictor for Indian languages. We train our models on ratings data from Indic TTS and TTS + VC Challenges.',
+                'link': 'https://www.isca-archive.org/interspeech_2024/udupa24b_interspeech.pdf'
+            }
+        ],
+        '2023': [
+            {
+                'title': 'An End-to-End TTS Model in Chhattisgarhi, a Low-Resource Indian Language',
+                'author': 'Singh, A. et al.',
+                'full_authors': 'Singh, A. et al.',
+                'abstract': 'With the advancement of voice technology, there is a drastic improvement in the realization of Text To Speech (TTS) systems. But the lack of technological support and diversities in the low-resourced Indian languages hinder the development of such systems for the Indian population. SYSPIN is an initiative that aims to develop TTS corpora and AI models in nine Indian languages.',
+                'link': 'https://link.springer.com/chapter/10.1007/978-3-031-48312-7_13'
+            }
+        ]
+    }
+    return render(request, 'dataset_syspin_pubs.html', {'publications': publications})
+
+# RESPIN Views mapped correctly to dataset_respin.html
+def respin_view(request):
+    return render(request, 'respin_home.html')
+
+def respin_languages_view(request):
+    return render(request, 'Language.html')
+
+def respin_models_view(request):
+    return render(request, 'Models.html')
+
+def respin_leaderboard_view(request):
+    return render(request, 'leaderboard.html')
+
+def respin_apikeys_view(request):
+    return render(request, 'api_keys.html')
+
+def respin_pubs_view(request):
+    return render(request, 'publications.html')
+
+# SPICOR Dataset Views
+def spicor_view(request):
+    return render(request, 'dataset_spicor.html')
+
+def spicor_languages_view(request):
+    return render(request, 'spicor_languages.html')
+
+def spicor_models_view(request):
+    return render(request, 'spicor_models.html')
+
+def spicor_leaderboard_view(request):
+    return render(request, 'spicor_leaderboard.html')
+
+def spicor_apikeys_view(request):
+    return render(request, 'spicor_api_keys.html')
+
+def spicor_pubs_view(request):
+    return render(request, 'spicor_publications.html')
+
+# ---------- VAANI ----------
+def vaani_view(request):
+    return render(request, 'dataset_vaani.html')
+
+def vaani_languages_view(request):
+    return render(request, 'dataset_vaani_languages.html')
+
+def vaani_models_view(request):
+    return render(request, 'dataset_vaani_models.html')
+
+def vaani_leaderboard_view(request):
+    return render(request, 'dataset_vaani_leaderboard.html')
+
+def vaani_apikeys_view(request):
+    return render(request, 'dataset_vaani_apikeys.html')
+
+def vaani_pubs_view(request):
+    return render(request, 'dataset_vaani_pubs.html')

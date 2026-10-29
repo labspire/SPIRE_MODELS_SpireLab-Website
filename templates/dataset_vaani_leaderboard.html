@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAANI Leaderboard | SPIRE MODELS</title>
+    <link rel="icon" type="image/png" href="{% static 'images/spire logo.png' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=999">
+    <style>
+        body { background-color: #f8fafc; color: #0f172a; font-family: system-ui, -apple-system, sans-serif; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        .portal-wide-container { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; flex: 1; }
+        .main-header { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 20px 0; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        .brand-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .header-logo { height: 42px; }
+        .brand-title { font-size: 1.3rem; font-weight: 800; color: #0f172a; display: block; line-height: 1.1; }
+        .brand-tag { font-size: 0.8rem; color: #64748b; }
+        .top-nav-links { list-style: none; display: flex; gap: 32px; margin: 0; padding: 0; }
+        .top-nav-links a { text-decoration: none; color: #475569; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+        .top-nav-links a:hover, .top-nav-links a.active { color: #7f1d1d; }
+        .hero-section { padding: 50px 0 40px 0; margin-bottom: 40px; }
+        .hero-section h1 { font-size: 2.3rem; font-weight: 800; margin: 0 0 12px 0; }
+        .placeholder-box { background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 10px; padding: 50px 20px; text-align: center; color: #94a3b8; font-style: italic; }
+        .main-footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 30px 0; margin-top: 60px; }
+        .footer-bottom { text-align: center; font-size: 0.85rem; color: #64748b; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="portal-wide-container header-container">
+            <a href="{% url 'home' %}" class="brand-wrapper">
+                <img src="{% static 'images/spire logo.png' %}?v=3" alt="SPIRE LAB" class="header-logo">
+                <div><span class="brand-title">SPIRE MODELS</span><span class="brand-tag">Indian Institute of Science (IISc)</span></div>
+            </a>
+            <nav>
+                <ul class="top-nav-links">
+                    <li><a href="{% url 'dataset_vaani_languages' %}">LANGUAGE</a></li>
+                    <li><a href="{% url 'dataset_vaani_models' %}">MODELS</a></li>
+                    <li><a href="{% url 'dataset_vaani_leaderboard' %}" class="active">LEADERBOARD</a></li>
+                    <li><a href="{% url 'dataset_vaani_apikeys' %}">API KEYS</a></li>
+                    <li><a href="{% url 'dataset_vaani_pubs' %}">PUBLICATIONS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="portal-wide-container">
+        <section class="hero-section">
+            <h1>VAANI Performance Leaderboard</h1>
+            <p style="color: #64748b;">Word Error Rate (WER) and spontaneous speech benchmark evaluations.</p>
+        </section>
+        <div class="placeholder-box">
+            [ VAANI benchmark evaluation metrics and leaderboard will be updated here... ]
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="portal-wide-container footer-bottom">
+            <p>&copy; 2026 SPIRE LAB, IISc Bangalore. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

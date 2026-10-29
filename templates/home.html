@@ -6,10 +6,242 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPIRE MODELS | IISc AI Research Console</title>
     <link rel="icon" type="image/png" href="{% static 'images/spire logo.png' %}?v=3">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=99">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=999">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- Wide, Spacious & Professional Layout --- */
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .portal-wide-container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+
+        /* Prominent Image Gallery Section */
+        .image-gallery-section {
+            margin: 40px 0 50px 0;
+            padding: 32px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+        }
+
+        .portal-section-header {
+            margin-bottom: 24px;
+        }
+
+        .portal-section-header h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 6px 0;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+
+        .portal-section-header p {
+            font-size: 0.95rem;
+            color: #64748b;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* --- Publications: two panels with scroll list --- */
+        .pp-row {
+            --pp-main: #0f172a;       
+            --pp-accent: #7f1d1d;      
+            --pp-bg: #f1f5f9;          
+            --pp-line: #dbe2ea;
+            margin: 40px 0;
+            background: var(--pp-bg);
+            border: 1px solid var(--pp-line);
+            font-family: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .pp-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            padding: 12px;
+        }
+
+        .pp-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 8px 14px 6px;
+            border-bottom: 1px solid var(--pp-line);
+        }
+
+        .pp-head h2 {
+            margin: 0;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 400;
+            font-size: 24px;
+            color: var(--pp-main);
+        }
+
+        .pp-head a {
+            color: var(--pp-main);
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        .pp-head a:hover {
+            color: var(--pp-accent);
+            text-decoration: underline;
+        }
+
+        .pp-list {
+            list-style: none;
+            margin: 0;
+            padding: 14px 8px 4px 10px;
+            height: 250px;
+            overflow-y: scroll;
+            background: #ffffff;
+            scrollbar-color: #8a8a8a #ffffff;
+        }
+
+        .pp-list::-webkit-scrollbar { width: 14px; }
+        .pp-list::-webkit-scrollbar-track { background: #fafafa; }
+        .pp-list::-webkit-scrollbar-thumb {
+            background: #8a8a8a;
+            border-radius: 8px;
+            border: 3px solid #fafafa;
+        }
+
+        .pp-item {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            margin-bottom: 14px;
+        }
+
+        .pp-badge {
+            flex: 0 0 92px;
+            text-align: center;
+            border: 1px solid var(--pp-main);
+            background: #ffffff;
+        }
+
+        .pp-badge .v {
+            display: block;
+            background: var(--pp-main);
+            color: #ffffff;
+            font-size: 14px;
+            padding: 3px 2px;
+            text-transform: uppercase;
+        }
+
+        .pp-badge .y {
+            display: block;
+            color: var(--pp-main);
+            font-size: 17px;
+            padding: 3px 2px;
+        }
+
+        .pp-title {
+            color: var(--pp-main);
+            font-size: 17px;
+            line-height: 1.3;
+            text-decoration: none;
+        }
+
+        .pp-title:hover {
+            color: var(--pp-accent);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 800px) {
+            .pp-cols { grid-template-columns: 1fr; }
+            .pp-item { gap: 14px; }
+            .pp-badge { flex-basis: 78px; }
+        }
+
+        /* --- OUR MODELS Section --- */
+        .models-wrapper-section {
+            margin: 50px 0;
+        }
+
+        .models-cards-3grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 24px;
+            margin-top: 22px;
+        }
+
+        .model-card-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .model-card-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(127, 29, 29, 0.1);
+            border-color: #7f1d1d;
+        }
+
+        .model-card-item h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 0;
+            margin-bottom: 12px;
+            transition: color 0.2s ease;
+        }
+
+        .model-card-item:hover h3 {
+            color: #7f1d1d;
+        }
+
+        .model-card-item p {
+            font-size: 0.92rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .btn-portal-action {
+            display: inline-block;
+            background: #0f172a;
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 11px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            width: fit-content;
+            transition: background 0.2s ease;
+        }
+
+        .model-card-item:hover .btn-portal-action,
+        .btn-portal-action:hover {
+            background: #7f1d1d;
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 
+    <!-- MAIN HEADER -->
     <header class="main-header">
         <div class="header-container">
             <a href="{% url 'home' %}" class="brand-wrapper">
@@ -23,212 +255,225 @@
             <div class="nav-menu-wrapper">
                 <nav>
                     <ul class="top-nav-links">
-                        <li class="context-menu-container languages-nav-item">
-                            <a href="{% url 'languages_page' %}">Languages</a>
-                            <div class="dropdown-panel lang-dropdown-panel">
-                                <div class="lang-pill-grid">
-                                    <span class="lang-pill-item">Bengali</span>
-                                    <span class="lang-pill-item">Bhojpuri</span>
-                                    <span class="lang-pill-item">Chhattisgarhi</span>
-                                    <span class="lang-pill-item">Hindi</span>
-                                    <span class="lang-pill-item">Kannada</span>
-                                    <span class="lang-pill-item">Magahi</span>
-                                    <span class="lang-pill-item">Maithili</span>
-                                    <span class="lang-pill-item">Marathi</span>
-                                    <span class="lang-pill-item">Telugu</span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="context-menu-container models-nav-item">
-                            <a href="{% url 'models_page' %}">Models</a>
-                            <div class="dropdown-panel">
-                                <a href="{% url 'model_asr' %}">1. Automatic Speech Recognition (ASR)</a>
-                                <a href="{% url 'model_lid' %}">2. Language Identification (LID)</a>
-                                <a href="{% url 'model_dialect' %}">3. Dialect Identification</a>
-                            </div>
-                        </li>
-
-                        <li><a href="{% url 'leaderboard_page' %}">Leaderboard</a></li>
-                        <li><a href="{% url 'api_keys_page' %}">API Keys</a></li>
-                        <li><a href="{% url 'publications_page' %}">Publications</a></li>
                     </ul>
                 </nav>
-
-                <div class="context-menu-container">
-                    <button class="dots-menu-btn">&#8942;</button>
-                    <div class="dropdown-panel">
-                        <a href="{% url 'publications_page' %}">About Laboratory</a>
-                        <a href="{% url 'publications_page' %}">Publications Archive</a>
-                    </div>
-                </div>
             </div>
         </div>
     </header>
 
-    <section class="hero-section" id="hero" style="position: relative; overflow: hidden;">
-        <canvas id="heroCanvas" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;"></canvas>
+    <div class="portal-wide-container">
+        <!-- IMAGE GALLERY SECTION -->
+        <section class="image-gallery-section">
+            <div class="portal-section-header">
+                <h2>SPIRE Lab Highlights & Infrastructure</h2>
+                <p>Visual preview of our lab environment, research setups, and experimental systems.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder-img">Image 1 Placeholder</div>
+                    <p style="margin-top: 8px; font-size: 0.85rem; color: #64748b;">Lab Server & Setup</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder-img">Image 2 Placeholder</div>
+                    <p style="margin-top: 8px; font-size: 0.85rem; color: #64748b;">Recording Studio</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder-img">Image 3 Placeholder</div>
+                    <p style="margin-top: 8px; font-size: 0.85rem; color: #64748b;">Acoustic Hardware</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder-img">Image 4 Placeholder</div>
+                    <p style="margin-top: 8px; font-size: 0.85rem; color: #64748b;">Team Collaboration</p>
+                </div>
+            </div>
+        </section>
 
-        <div class="hero-content-wrapper" style="position: relative; z-index: 2;">
-            <h1 class="hero-title">SPIRE LAB</h1>
-            <p class="hero-subtitle">Open Source Models Supporting 9 Languages</p>
-            <center><div class="full-accent-line"></div></center>
-        </div>
-    </section>
+        <!-- RECENT PUBLICATIONS SECTION -->
+        <section class="pp-row">
+            <div class="pp-head">
+                <h2>Recent Publications</h2>
+                <a href="{% url 'publications_page' %}">more...</a>
+            </div>
 
-    
-    <div class="section-zebra-fill">
-        <section class="sliding-section">
-            <h2 class="section-head">Our Speech Models</h2>
-            <p class="section-desc">Explore our deep learning models designed specifically for speech recognition, language detection, and regional accent analysis.</p>
-            <div class="matrix-container">
-                
-                <div class="ml-card">
-                    <h3>ASR Model</h3>
-                    <p>Automatic Speech Recognition engines fine-tuned to capture native multi-dialect acoustics, rendering clean transcription strings directly from audio.</p>
-                    <a href="{% url 'model_asr' %}" class="neon-btn">Launch Pipeline →</a>
+            <div class="pp-cols">
+                <!-- LEFT LIST -->
+                <ul class="pp-list">
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">NeurIPS</span><span class="y">2025</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">RESPIN-S1.0 Corpus: Read speech corpus of 10,000+ hours in 9 languages</a>
+                    </li>
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">NeurIPS</span><span class="y">2025</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">SYSPIN S1.0: Studio Quality Expressive Multilingual TTS Corpus</a>
+                    </li>
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">ASRU</span><span class="y">2025</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">MADASR 2.0: Multi-Lingual Multi-Dialect ASR Challenge in 8 Indian Languages</a>
+                    </li>
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">Interspeech</span><span class="y">2025</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">Jointly Improving Dialect Identification and ASR in Indian Languages</a>
+                    </li>
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">ICASSP</span><span class="y">2025</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">Improving Dialect ID in Indian Languages Using Multimodal Features</a>
+                    </li>
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">Interspeech</span><span class="y">2024</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">Adapter pre-training for improved speech recognition in unseen domains</a>
+                    </li>
+                </ul>
+
+                <!-- RIGHT LIST -->
+                <ul class="pp-list">
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">ASRU</span><span class="y">2025</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">Bottleneck Transformer-Based Approach for Improved Automatic STOI Score Prediction</a>
+                    </li>
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">Interspeech</span><span class="y">2025</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">Comparison of acoustic and textual features for dysarthria severity classification in ALS</a>
+                    </li>
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">Interspeech</span><span class="y">2025</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">Boosting StoRM Convergence with Metric Guidance and Non-Uniform State Sampling for Optimal Dereverberation</a>
+                    </li>
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">Interspeech</span><span class="y">2025</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">Enhancing Acoustic-to-Articulatory Inversion with Multi-Target Pretraining for Low-Resource Settings</a>
+                    </li>
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">Interspeech</span><span class="y">2025</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">A Real-Time MRI Study on Asymmetry in Velum Dynamics during VCV Production with Nasal Sounds</a>
+                    </li>
+                    <li class="pp-item">
+                        <div class="pp-badge"><span class="v">Interspeech</span><span class="y">2025</span></div>
+                        <a class="pp-title" href="{% url 'publications_page' %}">An approach to measuring the performance of ASR models in the context of LLM powered applications</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- OUR MODELS SECTION -->
+        <section class="models-wrapper-section">
+            <div class="portal-section-header" style="border-left: 4px solid #7f1d1d; padding-left: 12px;">
+                <h2>OUR MODELS</h2>
+            </div>
+
+            <div class="models-cards-3grid">
+                <!-- 1. ASR Model -->
+                <div class="model-card-item">
+                    <div>
+                        <h3>ASR Model</h3>
+                        <p>Automatic Speech Recognition engine fine-tuned to capture native multi-dialect acoustics, converting spoken audio directly into clean transcription text.</p>
+                    </div>
+                    <a href="{% url 'model_asr' %}" class="btn-portal-action">VIEW DETAILS →</a>
                 </div>
 
-                <div class="ml-card">
-                    <h3>Language Identification (LID)</h3>
-                    <p>High-fidelity acoustic frontends engineered to differentiate, classify, and tag spoken language vectors dynamically.</p>
-                    <a href="{% url 'model_lid' %}" class="neon-btn">Activate LID Portal →</a>
+                <!-- 2. Language Identification (LID) -->
+                <div class="model-card-item">
+                    <div>
+                        <h3>2. Language Identification (LID)</h3>
+                        <p>High-fidelity acoustic frontend engineered to detect and classify which of the 11 supported languages is being spoken in real time.</p>
+                    </div>
+                    <a href="{% url 'model_lid' %}" class="btn-portal-action">VIEW DETAILS →</a>
                 </div>
 
-                <div class="ml-card">
-                    <h3>Dialect Identification</h3>
-                    <p>Granular classification layers trained to distinguish regional accents, geographic phonetic variations, and modulations.</p>
-                    <a href="{% url 'model_dialect' %}" class="neon-btn">Run Dialect Scan →</a>
+                <!-- 3. Dialect Identification -->
+                <div class="model-card-item">
+                    <div>
+                        <h3>3. Dialect Identification</h3>
+                        <p>Granular classification model trained to distinguish regional accents and geographic phonetic variations within a single language.</p>
+                    </div>
+                    <a href="{% url 'model_dialect' %}" class="btn-portal-action">VIEW DETAILS →</a>
                 </div>
+            </div>
+        </section>
 
+        <!-- SPIRE DATASETS & REPOSITORIES SECTION -->
+        <section style="margin: 50px 0 60px 0;">
+            <div class="portal-section-header">
+                <h2>SPIRE Project Hubs & Repositories</h2>
+                <p>Select a project hub below to access language datasets, models, leaderboards, and API keys.</p>
+            </div>
+            
+            <div class="dataset-console-wrapper">
+                <!-- RESPIN Link -->
+                <a href="{% url 'dataset_respin' %}" style="text-decoration: none; color: inherit; display: block; margin-bottom: 16px;">
+                    <div class="dataset-tech-card">
+                        <div class="dataset-tech-header">
+                            <div class="dataset-meta-group">
+                                <h3>RESPIN S1.0 Dialect Benchmark</h3>
+                                <p class="dataset-one-line-tag">Dialect-rich acoustic model training checkpoints built on extensive regional speech resources.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                    
+                <!-- SYSPIN Link -->
+                <a href="{% url 'dataset_syspin' %}" style="text-decoration: none; color: inherit; display: block; margin-bottom: 16px;">
+                    <div class="dataset-tech-card">
+                        <div class="dataset-tech-header">
+                            <div class="dataset-meta-group">
+                                <h3>SYSPIN S1.0 Multilingual TTS</h3>
+                                <p class="dataset-one-line-tag">Multi-speaker expressive text-to-speech model weights optimized for studio-quality synthesis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- SPICOR Link -->
+                <a href="{% url 'dataset_spicor' %}" style="text-decoration: none; color: inherit; display: block; margin-bottom: 16px;">
+                    <div class="dataset-tech-card">
+                        <div class="dataset-tech-header">
+                            <div class="dataset-meta-group">
+                                <h3>SPICOR TTS 1.0</h3>
+                                <p class="dataset-one-line-tag">Domain-rich parametric speech synthesis model checkpoints structured for precise phonetic alignment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- VAANI Link (Active) -->
+                <a href="{% url 'dataset_vaani' %}" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="dataset-tech-card">
+                        <div class="dataset-tech-header">
+                            <div class="dataset-meta-group">
+                                <h3>VAANI Corpus &amp; Models</h3>
+                                <p class="dataset-one-line-tag">Spontaneous speech recognition weights capturing diverse linguistic landscapes across multiple regions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                 <!--  SPICOR TTS_2.0 -->
+                {% comment %} <a href="{% url 'dataset_spicor_2.0' %}" style="text-decoration: none; color: inherit; display: block;"> {% endcomment %}
+                    <div class="dataset-tech-card">
+                        <div class="dataset-tech-header">
+                            <div class="dataset-meta-group">
+                                <h3>SPICOR TTS_2.0</h3>
+                                <p class="dataset-one-line-tag">Spontaneous speech recognition weights capturing diverse linguistic landscapes across multiple regions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </section>
     </div>
 
-    <section class="sliding-section">
-        <h2 class="section-head">SPIRE Datasets &amp; Model Repositories</h2>
-        <p class="section-desc">Explore our high-scale speech corpora, foundational checkpoints, and pre-trained models built at SPIRE Lab.</p>
-        
-        <div class="dataset-console-wrapper">
-            
-            <div class="dataset-tech-card">
-                <div class="dataset-tech-header">
-                    <div class="dataset-meta-group">
-                        <h3>RESPIN S1.0 Dialect Benchmark</h3>
-                        <p class="dataset-one-line-tag">Dialect-rich acoustic model training checkpoints built on extensive regional speech resources.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dataset-tech-card">
-                <div class="dataset-tech-header">
-                    <div class="dataset-meta-group">
-                        <h3>SYSPIN S1.0 Multilingual TTS</h3>
-                        <p class="dataset-one-line-tag">Multi-speaker expressive text-to-speech model weights optimized for studio-quality synthesis.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dataset-tech-card">
-                <div class="dataset-tech-header">
-                    <div class="dataset-meta-group">
-                        <h3>SPICOR TTS 1.0</h3>
-                        <p class="dataset-one-line-tag">Domain-rich parametric speech synthesis model checkpoints structured for precise phonetic alignment.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dataset-tech-card">
-                <div class="dataset-tech-header">
-                    <div class="dataset-meta-group">
-                        <h3>SPICOR TTS 2.0</h3>
-                        <p class="dataset-one-line-tag">Advanced neural vocoder checkpoints fine-tuned for natural prosody control and generation.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dataset-tech-card">
-                <div class="dataset-tech-header">
-                    <div class="dataset-meta-group">
-                        <h3>VAANI Corpus &amp; Models</h3>
-                        <p class="dataset-one-line-tag">Spontaneous speech recognition weights capturing diverse linguistic landscapes across multiple regions.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dataset-tech-card">
-                <div class="dataset-tech-header">
-                    <div class="dataset-meta-group">
-                        <h3>SPIRE EMA Articulatory Suite</h3>
-                        <p class="dataset-one-line-tag">Articulatory-to-acoustic inversion model checkpoints mapping vocal tract dynamics and sensor data.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dataset-tech-card">
-                <div class="dataset-tech-header">
-                    <div class="dataset-meta-group">
-                        <h3>SPIRE SIES Spontaneous Speech</h3>
-                        <p class="dataset-one-line-tag">Conversational dialogue model architectures engineered for unscripted speech analysis.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dataset-tech-card">
-                <div class="dataset-tech-header">
-                    <div class="dataset-meta-group">
-                        <h3>SPIRE VCV Articulatory Suite</h3>
-                        <p class="dataset-one-line-tag">Co-articulation prediction models built to evaluate rate-dependent phonetic variations.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dataset-tech-card">
-                <div class="dataset-tech-header">
-                    <div class="dataset-meta-group">
-                        <h3>wSPIRE Whispered Speech</h3>
-                        <p class="dataset-one-line-tag">Low-amplitude speech enhancement models configured for robust covert acoustic recognition.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dataset-tech-card">
-                <div class="dataset-tech-header">
-                    <div class="dataset-meta-group">
-                        <h3>IndicTIMIT Acoustic Corpus</h3>
-                        <p class="dataset-one-line-tag">Phonetically rich feature extraction models optimized for accent and pronunciation evaluation.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="sliding-section">
-        <h2 class="section-head">Evaluation & API Access</h2>
-        <p class="section-desc">
-            View our model performance metrics or get your API keys to start using SPIRE speech technologies.
-        </p>
-        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 25px;">
-            <a href="{% url 'leaderboard_page' %}" class="neon-btn">Performance Leaderboard →</a>
-            <a href="{% url 'api_keys_page' %}" class="neon-btn">API Key Node Dashboard →</a>
-        </div>
-    </section>
-
+    <!-- FOOTER -->
     <footer class="main-footer">
         <div class="footer-container">
-            
             <div class="footer-branding">
                 <div class="footer-logo-row">
-                    <img src="{% static 'images/spire logo.png' %}" alt="SPIRE LAB Logo" class="footer-logo">
+                    <img src="{% static 'images/spire logo.png' %}?v=3" alt="SPIRE LAB Logo" class="footer-logo">
                     <span class="footer-brand-title">SPIRE MODELS</span>
                 </div>
-                <p style="margin-top: 10px; font-size: 0.9rem; line-height: 1.6;">
+                <p style="margin-top: 10px; font-size: 0.88rem; line-height: 1.6;">
                     Signal Processing Interpretation and REpresentation LABoratory.<br>
                     Electrical Engineering Department,<br>
                     Indian Institute of Science (IISc), Bangalore, India.
                 </p>
-
                 <div class="footer-external-logos">
                     <a href="https://spire.ee.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="SPIRE LAB Official Website">
                         <img src="{% static 'images/images.jpeg' %}" alt="SPIRE LAB">
@@ -241,12 +486,11 @@
 
             <div></div>
 
-            <div class="footer-contact-col">
+            <div class="portal-contact-col footer-contact-col">
                 <h4>Contact Channels</h4>
                 <p><strong>Email:</strong> spirelab.ee@iisc.ac.in</p>
                 <p><strong>Address:</strong> SPIRE LAB, Room No. EE C 326, Department of Electrical Engineering, Indian Institute of Science (IISc), Bangalore-560012, Karnataka, India</p>
             </div>
-
         </div>
 
         <div class="footer-bottom">
@@ -254,74 +498,6 @@
             <p>Designed for Advanced Speech Intelligence Operations</p>
         </div>
     </footer>
-
-    <script>
-        (function() {
-            const canvas = document.getElementById('heroCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-
-            function resizeCanvas() {
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-            window.addEventListener('load', resizeCanvas);
-
-            const keywords = [
-                'Automatic Speech Recognition', 'Language Identification', 'Dialect Recognition',
-                'Speech to Text', 'Text to Speech', 'Multilingual Models', 'Acoustic Signal Processing',
-                'Phonetic Feature Extraction', 'Neural Machine Translation', 'Low Resource Corpora',
-                'Deep Learning Frameworks', 'Indian Regional Dialects'
-            ];
-
-            class TextParticle {
-                constructor() {
-                    this.reset();
-                    this.y = Math.random() * canvas.height;
-                }
-
-                reset() {
-                    this.text = keywords[Math.floor(Math.random() * keywords.length)];
-                    this.x = Math.random() * (canvas.width - 200);
-                    this.y = canvas.height + Math.random() * 50;
-                    this.speed = 0.25 + Math.random() * 0.4;
-                    this.opacity = 0.04 + Math.random() * 0.08;
-                    this.fontSize = 13 + Math.random() * 14;
-                }
-
-                update() {
-                    this.y -= this.speed;
-                    if (this.y < -this.fontSize) {
-                        this.reset();
-                    }
-                }
-
-                draw() {
-                    ctx.fillStyle = `rgba(15, 23, 42, ${this.opacity})`;
-                    ctx.font = `600 ${this.fontSize}px 'Segoe UI', sans-serif`;
-                    ctx.fillText(this.text, this.x, this.y);
-                }
-            }
-
-            const particleArray = [];
-            const totalParticles = 18; 
-            for (let i = 0; i < totalParticles; i++) {
-                particleArray.push(new TextParticle());
-            }
-
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < particleArray.length; i++) {
-                    particleArray[i].update();
-                    particleArray[i].draw();
-                }
-                requestAnimationFrame(animate);
-            }
-            animate();
-        })();
-    </script>
 
 </body>
 </html>

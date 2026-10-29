@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSPIN Models | SPIRE Models Console</title>
+    <link rel="icon" type="image/png" href="{% static 'images/spire logo.png' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=999">
+    <style>
+        .dataset-hero { background: #f8fafc; padding: 40px 5%; border-bottom: 1px solid #e2e8f0; }
+        .content-container { padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
+        .dummy-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 30px; margin-top: 20px; text-align: center; color: #94a3b8; font-style: italic; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="{% url 'dataset_syspin' %}" class="brand-wrapper">
+                <img src="{% static 'images/spire logo.png' %}?v=3" alt="SPIRE LAB" class="header-logo">
+                <div class="brand-text-block">
+                    <span class="brand-title">SYSPIN MODELS</span>
+                    <span class="brand-tag">Dedicated Model Suite</span>
+                </div>
+            </a>
+            <div class="nav-menu-wrapper">
+                <nav>
+                    <ul class="top-nav-links">
+                        <li><a href="{% url 'dataset_syspin' %}">Language</a></li>
+                        <li><a href="{% url 'dataset_syspin_models' %}">Models</a></li>
+                        <li><a href="{% url 'dataset_syspin_leaderboard' %}">Leaderboard</a></li>
+                        <li><a href="{% url 'dataset_syspin_apikeys' %}">API Keys</a></li>
+                        <li><a href="{% url 'dataset_syspin_pubs' %}">Publications</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="dataset-hero">
+        <h1 style="font-size: 2rem; color: #0f172a;">SYSPIN S1.0 Model Checkpoints</h1>
+        <p style="color: #64748b;">Explore all specific deep learning architectures and trained weights for SYSPIN.</p>
+    </section>
+
+    <div class="content-container">
+        <div class="dummy-box">
+            [ SYSPIN specific model pipelines and download checkpoints will be placed here... ]
+        </div>
+    </div>
+</body>
+</html>
