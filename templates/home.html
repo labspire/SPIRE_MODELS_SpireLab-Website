@@ -42,7 +42,7 @@
 
         .portal-section-header h2 {
             font-size: 1.6rem;
-            font-weight: 800;
+            font-weight: 600;          /* was 800 */
             color: #0f172a;
             margin: 0 0 6px 0;
             text-transform: uppercase;
@@ -53,7 +53,7 @@
             font-size: 0.95rem;
             color: #64748b;
             margin: 0;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         /* --- Publications: two panels with scroll list --- */
@@ -200,7 +200,7 @@
 
         .model-card-item h3 {
             font-size: 1.25rem;
-            font-weight: 800;
+            font-weight: 600;          /* was 800 */
             color: #0f172a;
             margin-top: 0;
             margin-bottom: 12px;
@@ -223,7 +223,7 @@
             background: #0f172a;
             color: #ffffff;
             font-size: 0.82rem;
-            font-weight: 700;
+            font-weight: 600;          /* was 700 */
             padding: 11px 20px;
             border-radius: 6px;
             text-decoration: none;
@@ -236,6 +236,17 @@
         .btn-portal-action:hover {
             background: #7f1d1d;
             color: #ffffff;
+        }
+
+        /* --- Dataset cards: same weight/colour everywhere --- */
+        .dataset-tech-card h3 {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .dataset-tech-card .dataset-one-line-tag {
+            font-weight: 400;
+            color: #64748b;
         }
     </style>
 </head>
@@ -265,8 +276,8 @@
         <!-- IMAGE GALLERY SECTION -->
         <section class="image-gallery-section">
             <div class="portal-section-header">
-                <h2>SPIRE Lab Highlights & Infrastructure</h2>
-                <p>Visual preview of our lab environment, research setups, and experimental systems.</p>
+                <h2>Img</h2>
+                {% comment %} <p>Visual preview of our lab environment, research setups, and experimental systems.</p> {% endcomment %}
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
@@ -446,17 +457,90 @@
                     </div>
                 </a>
 
-                 <!--  SPICOR TTS_2.0 -->
+                <!-- SPICOR TTS_2.0 -->
                 {% comment %} <a href="{% url 'dataset_spicor_2.0' %}" style="text-decoration: none; color: inherit; display: block;"> {% endcomment %}
                     <div class="dataset-tech-card">
                         <div class="dataset-tech-header">
                             <div class="dataset-meta-group">
                                 <h3>SPICOR TTS_2.0</h3>
-                                <p class="dataset-one-line-tag">Spontaneous speech recognition weights capturing diverse linguistic landscapes across multiple regions.</p>
+                                <p class="dataset-one-line-tag">Studio recorded speech data empowering researchers to build advanced text-to-speech models.</p>
+                            </div>
+                        </div>
+                    </div>
+                {% comment %} </a> {% endcomment %}
+
+                <!-- SPICOR TTS_3.0 Corpus (Active) -->
+                <a href="{% url 'dataset_vaani' %}" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="dataset-tech-card">
+                        <div class="dataset-tech-header">
+                            <div class="dataset-meta-group">
+                                <h3>SPICOR TTS_3.0 Corpus</h3>
+                                <p class="dataset-one-line-tag">Validated multi-script audio-text datasets unlocking new possibilities for Indian language speech synthesis.</p>
                             </div>
                         </div>
                     </div>
                 </a>
+
+                <!-- SPIRE EMA (Active) -->
+                <a href="{% url 'dataset_vaani' %}" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="dataset-tech-card">
+                        <div class="dataset-tech-header">
+                            <div class="dataset-meta-group">
+                                <h3>SPIRE EMA</h3>
+                                <p class="dataset-one-line-tag">High-precision electromagnetic articulography (EMA) recordings capturing 3D tongue and lip movements across native English speakers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- SPIRE-SIES (Active) -->
+                <a href="{% url 'dataset_vaani' %}" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="dataset-tech-card">
+                        <div class="dataset-tech-header">
+                            <div class="dataset-meta-group">
+                                <h3>SPIRE-SIES</h3>
+                                <p class="dataset-one-line-tag">Image-stimulated spontaneous speech datasets featuring human-validated transcripts across diverse Indian speakers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- SPIRE VCV (Active) -->
+                <a href="{% url 'dataset_vaani' %}" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="dataset-tech-card">
+                        <div class="dataset-tech-header">
+                            <div class="dataset-meta-group">
+                                <h3>SPIRE VCV</h3>
+                                <p class="dataset-one-line-tag">Simultaneous acoustic and articulatory speech datasets capturing three distinct speaking rates across Indian English speakers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- wSPIRE (Active) -->
+                <a href="{% url 'dataset_vaani' %}" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="dataset-tech-card">
+                        <div class="dataset-tech-header">
+                            <div class="dataset-meta-group">
+                                <h3>wSPIRE</h3>
+                                <p class="dataset-one-line-tag">Parallel whisper and neutral speech datasets recorded across multiple devices for robust acoustic modeling.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- IndicTIMIT (Active) -->
+                <a href="{% url 'dataset_vaani' %}" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="dataset-tech-card">
+                        <div class="dataset-tech-header">
+                            <div class="dataset-meta-group">
+                                <h3>IndicTIMIT</h3>
+                                <p class="dataset-one-line-tag">Phonetically balanced Indian English speech datasets built on TIMIT stimuli with linguist-annotated phoneme labels.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
             </div>
         </section>
     </div>

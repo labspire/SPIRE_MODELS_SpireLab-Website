@@ -7,7 +7,7 @@
     <title>VAANI Languages | SPIRE MODELS</title>
     <link rel="icon" type="image/png" href="{% static 'images/spire logo.png' %}?v=3">
     <link rel="stylesheet" href="{% static 'css/style.css' %}?v=999">
-    <style>
+    {% comment %} <style>
         body { background-color: #f8fafc; color: #0f172a; font-family: system-ui, -apple-system, sans-serif; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
         .portal-wide-container { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 40px; box-sizing: border-box; flex: 1; }
         .main-header { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 20px 0; }
@@ -24,7 +24,7 @@
         .placeholder-box { background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 10px; padding: 50px 20px; text-align: center; color: #94a3b8; font-style: italic; }
         .main-footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 30px 0; margin-top: 60px; }
         .footer-bottom { text-align: center; font-size: 0.85rem; color: #64748b; }
-    </style>
+    </style> {% endcomment %}
 </head>
 <body>
     <header class="main-header">
@@ -55,10 +55,43 @@
         </div>
     </div>
 
+ <!-- FOOTER -->
     <footer class="main-footer">
-        <div class="portal-wide-container footer-bottom">
+        <div class="footer-container">
+            <div class="footer-branding">
+                <div class="footer-logo-row">
+                    <img src="{% static 'images/spire logo.png' %}?v=3" alt="SPIRE LAB Logo" class="footer-logo">
+                    <span class="footer-brand-title">SPIRE MODELS</span>
+                </div>
+                <p style="margin-top: 10px; font-size: 0.88rem; line-height: 1.6;">
+                    Signal Processing Interpretation and REpresentation LABoratory.<br>
+                    Electrical Engineering Department,<br>
+                    Indian Institute of Science (IISc), Bangalore, India.
+                </p>
+                <div class="footer-external-logos">
+                    <a href="https://spire.ee.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="SPIRE LAB Official Website">
+                        <img src="{% static 'images/images.jpeg' %}" alt="SPIRE LAB">
+                    </a>
+                    <a href="https://www.iisc.ac.in/" target="_blank" rel="noopener noreferrer" title="IISc Official Website">
+                        <img src="{% static 'images/IISc logo.jpg' %}" alt="IISc">
+                    </a>
+                </div>
+            </div>
+
+            <div></div>
+
+            <div class="portal-contact-col footer-contact-col">
+                <h4>Contact Channels</h4>
+                <p><strong>Email:</strong> spirelab.ee@iisc.ac.in</p>
+                <p><strong>Address:</strong> SPIRE LAB, Room No. EE C 326, Department of Electrical Engineering, Indian Institute of Science (IISc), Bangalore-560012, Karnataka, India</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
             <p>&copy; 2026 SPIRE LAB, IISc Bangalore. All Rights Reserved.</p>
+            <p>Designed for Advanced Speech Intelligence Operations</p>
         </div>
     </footer>
+
 </body>
 </html>
