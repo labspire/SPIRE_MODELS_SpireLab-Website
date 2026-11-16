@@ -30,7 +30,7 @@
 
 .selector-chosen .list-footer-display {
     border: 1px solid var(--border-color);
-    border-top: none;
+    border-top: none !important;: none;
     border-radius: 0 0 4px 4px;
     margin: 0 0 10px;
     padding: 8px;
@@ -435,7 +435,7 @@ span.clearable-file-input label {
 .calendar caption, .calendarbox h2 {
     margin: 0;
     text-align: center;
-    border-top: none;
+    border-top: none !important;: none;
     font-weight: 700;
     font-size: 0.75rem;
     color: #333;
@@ -445,7 +445,7 @@ span.clearable-file-input label {
 .calendar th {
     padding: 8px 5px;
     background: var(--darkened-bg);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: none !important;: 1px solid var(--border-color);
     font-weight: 400;
     font-size: 0.75rem;
     text-align: center;
@@ -457,8 +457,8 @@ span.clearable-file-input label {
     font-size: 0.75rem;
     text-align: center;
     padding: 0;
-    border-top: 1px solid var(--hairline-color);
-    border-bottom: none;
+    border-top: none !important;: 1px solid var(--hairline-color);
+    border-bottom: none !important;: none;
 }
 
 .calendar td.selected a {
@@ -511,7 +511,7 @@ span.clearable-file-input label {
     color: var(--body-quiet-color);
     font-size: 0.6875rem;
     line-height: 0.6875rem;
-    border-top: 1px solid var(--hairline-color);
+    border-top: none !important;: 1px solid var(--hairline-color);
     padding: 8px 0;
 }
 
@@ -540,7 +540,7 @@ span.clearable-file-input label {
     padding: 4px 0;
     font-size: 0.75rem;
     background: var(--close-button-bg);
-    border-top: 1px solid var(--border-color);
+    border-top: none !important;: 1px solid var(--border-color);
     color: var(--button-fg);
 }
 

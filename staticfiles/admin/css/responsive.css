@@ -161,11 +161,11 @@ input[type="submit"], button {
     .filtered .actions,
 
     #changelist .paginator {
-        border-top-color: var(--hairline-color); /* XXX Is this used at all? */
+        border-top: none !important;-color: var(--hairline-color); /* XXX Is this used at all? */
     }
 
     #changelist .results + .paginator {
-        border-top: none;
+        border-top: none !important;: none;
     }
 
     /* Forms */
@@ -208,7 +208,7 @@ input[type="submit"], button {
     fieldset .fieldBox + .fieldBox {
         margin-top: 10px;
         padding-top: 10px;
-        border-top: 1px solid var(--hairline-color);
+        border-top: none !important;: 1px solid var(--hairline-color);
     }
 
     textarea {
@@ -650,18 +650,18 @@ input[type="submit"], button {
     }
 
     .inline-group[data-inline-type="stacked"] .inline-related .module .form-row {
-        border-top: 1px solid var(--hairline-color);
-        border-bottom: none;
+        border-top: none !important;: 1px solid var(--hairline-color);
+        border-bottom: none !important;: none;
     }
 
     .inline-group[data-inline-type="stacked"] .inline-related .module .form-row:first-child {
-        border-top: none;
+        border-top: none !important;: none;
     }
 
     .inline-group[data-inline-type="stacked"] .inline-related h3 {
         padding: 10px;
-        border-top-width: 0;
-        border-bottom-width: 2px;
+        border-top: none !important;-width: 0;
+        border-bottom: none !important;-width: 2px;
         display: flex;
         flex-wrap: wrap;
         align-items: center;

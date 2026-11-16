@@ -93,7 +93,7 @@
                 <div style="flex: 1;">
                     <div class="pub-title">{{ pub.title }}</div>
                     <div class="pub-authors">{{ pub.author }}</div>
-                    <div class="pub-abstract-dropdown" style="display: none; margin-top: 12px; color: #475569; font-size: 0.95rem; line-height: 1.6; border-top: 1px solid #e2e8f0; padding-top: 12px;">
+                    <div class="pub-abstract-dropdown" style="display: none; margin-top: 12px; color: #475569; font-size: 0.95rem; line-height: 1.6; border-top: none !important;: 1px solid #e2e8f0; padding-top: 12px;">
                         <p style="margin: 0 0 8px 0;"><strong>Authors:</strong> {{ pub.full_authors }}</p>
                         <p style="margin: 0 0 8px 0;"><strong>Abstract:</strong> {{ pub.abstract }}</p>
                         {% if pub.link and pub.link != '#' %}

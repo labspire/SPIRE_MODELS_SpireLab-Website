@@ -6,7 +6,7 @@
     overflow: hidden;
     padding: 10px;
     font-size: 0.8125rem;
-    border-bottom: 1px solid var(--hairline-color);
+    border-bottom: none !important;: 1px solid var(--hairline-color);
 }
 
 .form-row img, .form-row input {
@@ -95,7 +95,7 @@ fieldset .inline-heading,
 
 .aligned fieldset {
     flex-grow: 1;
-    border-top: none;
+    border-top: none !important;: none;
 }
 
 .aligned fieldset > div {
@@ -476,12 +476,12 @@ body.popup .submit-row {
     color: var(--body-quiet-color);
     background: var(--darkened-bg);
     padding: 8px 10px;
-    border-bottom: 1px solid var(--hairline-color);
+    border-bottom: none !important;: 1px solid var(--hairline-color);
 }
 
 .inline-group .tabular tr.add-row td {
     padding: 8px 10px;
-    border-bottom: 1px solid var(--hairline-color);
+    border-bottom: none !important;: 1px solid var(--hairline-color);
 }
 
 .inline-group div.add-row a,
